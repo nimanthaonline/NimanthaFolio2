@@ -7,9 +7,10 @@
 
 const SITE_CONFIG = {
   "name": "Nimantha Galhenage",
-  "tagline": "Creative Designer, Videographer & Editor",
+  "tagline": "Landscape, Architecture Photographer, Creative Designer, Videographer & Editor",
   "bio": "Photographer & Videographer based in Sri Lanka with 10+ years of experience creating compelling visual content. I specialize in landscape and architecture photography, along with real estate, events, reels, and commercial videography — crafting visuals that combine creativity, storytelling, and attention to detail.",
-  "heroImage": "https://photographylife.com/wp-content/uploads/2016/06/Mass.jpg",
+  "heroImage": "https://img.magnific.com/free-photo/beautiful-lake-mountains_395237-44.jpg",
+  "footerNotes": "© 2026 Nimantha Galhenage. All rights reserved.",
   "contact": {
     "email1": "hello@nimanthagalhenage.com",
     "email2": "ngalhenage@gmail.com",
@@ -62,7 +63,32 @@ const SERVICES = [
 ];
 
 const portfolioData = [
-  // ─── LANDSCAPE CATEGORY ───
+  {
+    "id": "vd-08",
+    "category": "videography",
+    "title": "34",
+    "cover": "https://img.magnific.com/free-photo/beautiful-lake-mountains_395237-44.jpg",
+    "description": "33333333",
+    "gallery": [
+      "https://img.magnific.com/free-photo/beautiful-lake-mountains_395237-44.jpg"
+    ],
+    "tools": "3",
+    "client": "3",
+    "agency": "3"
+  },
+  {
+    "id": "vd-07",
+    "category": "videography",
+    "title": "1",
+    "cover": "https://img.magnific.com/free-photo/beautiful-lake-mountains_395237-44.jpg",
+    "description": "ddddd",
+    "gallery": [
+      "https://img.magnific.com/free-photo/beautiful-lake-mountains_395237-44.jpg"
+    ],
+    "tools": "Arri Alexa",
+    "client": "d",
+    "agency": "d"
+  },
   {
     "id": "ls-01",
     "category": "landscape",
@@ -130,19 +156,6 @@ const portfolioData = [
     "agency": "Ceylon Journeys"
   },
   {
-    "id": "ls-07",
-    "category": "landscape",
-    "title": "Sigiriya Citadel Sunrise",
-    "cover": "https://images.unsplash.com/photo-1588598126308-ba91041d8d21?w=800&q=80",
-    "description": "Sigiriya Lion Rock rising majestically out of the misty dry-zone jungles at the crack of dawn, captured from Pidurangala.",
-    "gallery": [
-      "https://images.unsplash.com/photo-1588598126308-ba91041d8d21?w=1200&q=80"
-    ],
-    "tools": "Sony A7R V, 24-70mm f/2.8 GM II",
-    "client": "Archaeology Dept Sri Lanka",
-    "agency": "Heritage Media"
-  },
-  {
     "id": "ls-08",
     "category": "landscape",
     "title": "Tea Gardens of Nuwara Eliya",
@@ -207,8 +220,6 @@ const portfolioData = [
     "client": "Eastern Province Tourism Development",
     "agency": "—"
   },
-
-  // ─── ARCHITECTURE CATEGORY ───
   {
     "id": "ar-01",
     "category": "architecture",
@@ -353,8 +364,6 @@ const portfolioData = [
     "client": "Urban Loft Corp",
     "agency": "Colombo Space Labs"
   },
-
-  // ─── VIDEOGRAPHY CATEGORY ───
   {
     "id": "vd-01",
     "category": "videography",
@@ -438,76 +447,6 @@ const portfolioData = [
     ],
     "tools": "Sony FX3, DJI Mic 2, Tamron 28-75mm G2",
     "client": "Ceylon Rail Expeditions",
-    "agency": "—"
-  },
-  {
-    "id": "vd-07",
-    "category": "videography",
-    "title": "Luxury Wellness Resort — Promotional Ad",
-    "cover": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80",
-    "videoEmbed": "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    "description": "Promotional video showcasing high-end ayurvedic spas, infinity pools, and sunrise yoga sessions in Sigiriya.",
-    "gallery": [
-      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1200&q=80"
-    ],
-    "tools": "Arri Alexa Mini LF, Signature Primes",
-    "client": "Amaya Resorts Group",
-    "agency": "Leo Burnett Colombo"
-  },
-  {
-    "id": "vd-08",
-    "category": "videography",
-    "title": "Nine Arch Train Chase — FPV Drone Reel",
-    "cover": "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=800&q=80",
-    "videoEmbed": "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    "description": "An adrenaline-fueled, single-shot FPV drone sequence chasing the blue passenger train across the Nine Arch Bridge.",
-    "gallery": [
-      "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1200&q=80"
-    ],
-    "tools": "DJI Avata 2, GoPro Hero 12 Black (Naked)",
-    "client": "Adventures Sri Lanka",
-    "agency": "FPV Flight Labs"
-  },
-  {
-    "id": "vd-09",
-    "category": "videography",
-    "title": "Kandy Esala Perahera — Cultural Documentary",
-    "cover": "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=800&q=80",
-    "videoEmbed": "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    "description": "Low-light cinema documentation of the grand parade in Kandy, highlighting fire dancers, traditional drummers, and decorated elephants.",
-    "gallery": [
-      "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1200&q=80"
-    ],
-    "tools": "Sony FX3, Tamron 35-150mm f/2-2.8",
-    "client": "Temple of the Tooth Relic Trust",
-    "agency": "Kandy Media Center"
-  },
-  {
-    "id": "vd-10",
-    "category": "videography",
-    "title": "Surfing at Arugam Bay — Action Sports Reel",
-    "cover": "https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=800&q=80",
-    "videoEmbed": "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    "description": "Slow-motion sports videography showcasing local and international surfers riding the waves at Arugam Bay point break.",
-    "gallery": [
-      "https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=1200&q=80"
-    ],
-    "tools": "Sony FX6, DJI Ronin 2, 70-200mm f/2.8",
-    "client": "Sri Lanka Surf Association",
-    "agency": "Epic Surf Productions"
-  },
-  {
-    "id": "vd-11",
-    "category": "videography",
-    "title": "Traditional Pottery — Artisan Micro-Film",
-    "cover": "https://images.unsplash.com/photo-1565192647048-f997ecd87abf?w=800&q=80",
-    "videoEmbed": "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    "description": "A close-up documentary showcasing local potters molding clay in rural Kegalle, focusing on tactile textures and hand movements.",
-    "gallery": [
-      "https://images.unsplash.com/photo-1565192647048-f997ecd87abf?w=1200&q=80"
-    ],
-    "tools": "Sony FX3, Sigma 105mm f/2.8 Macro Lens",
-    "client": "Heritage Crafts Association",
     "agency": "—"
   }
 ];

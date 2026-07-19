@@ -70,111 +70,154 @@
   <!-- Main Container -->
   <main class="flex-1 max-w-[1600px] w-full mx-auto px-6 py-8 grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-8">
 
-    <!-- LEFT SCREEN: Add/Edit Project Form -->
-    <section class="bg-white border border-stone-200 rounded-lg p-6 shadow-sm flex flex-col gap-6">
-      <div class="border-b border-stone-100 pb-4">
-        <h2 class="text-lg font-bold text-stone-900">Add New Project</h2>
-        <p class="text-xs text-stone-500 mt-1">Input details to append a new workspace entry. Fields will auto-generate IDs.</p>
-      </div>
+    <!-- LEFT COLUMN: Settings & Add Projects -->
+    <div class="flex flex-col gap-6">
 
-      <form id="project-form" class="space-y-4">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <!-- Title -->
-          <div>
-            <label class="block text-xs font-bold text-stone-500 uppercase mb-1.5" for="project-title">Project Title*</label>
-            <input type="text" id="project-title" required class="w-full text-sm border border-stone-200 rounded p-2.5 bg-stone-50 focus:bg-white focus:outline-stone-500 transition-colors" placeholder="e.g. Sunrise at Ella Rock">
-          </div>
-          <!-- Thumbnail URL -->
-          <div>
-            <label class="block text-xs font-bold text-stone-500 uppercase mb-1.5" for="project-cover">Thumbnail (Cover Image URL)*</label>
-            <input type="url" id="project-cover" required class="w-full text-sm border border-stone-200 rounded p-2.5 bg-stone-50 focus:bg-white focus:outline-stone-500 transition-colors" placeholder="https://images.unsplash.com/...">
-          </div>
+      <!-- SITE CONFIGURATION CARD -->
+      <section class="bg-white border border-stone-200 rounded-lg p-6 shadow-sm flex flex-col gap-4">
+        <div class="border-b border-stone-100 pb-3">
+          <h2 class="text-xs font-bold text-stone-900 uppercase tracking-wider">Site Configuration</h2>
+          <p class="text-[11px] text-stone-500 mt-0.5">Customize global components like the Hero background cover, tagline, bio, and copyright note.</p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <!-- Category -->
+        <form id="config-form" class="space-y-4">
+          <!-- Hero Image -->
           <div>
-            <label class="block text-xs font-bold text-stone-500 uppercase mb-1.5" for="project-category">Category*</label>
-            <select id="project-category" required class="w-full text-sm border border-stone-200 rounded p-2.5 bg-stone-50 focus:bg-white focus:outline-stone-500 transition-colors">
-              <option value="" disabled selected>Select Category</option>
-              <option value="landscape">Landscape Photography</option>
-              <option value="architecture">Architecture Photography</option>
-              <option value="videography">Videography</option>
-            </select>
+            <label class="block text-[10px] font-bold text-stone-500 uppercase mb-1.5" for="config-hero-image">Hero Background Image URL*</label>
+            <input type="url" id="config-hero-image" required class="w-full text-xs border border-stone-200 rounded p-2.5 bg-stone-50 focus:bg-white focus:outline-stone-500 transition-colors" placeholder="https://images.unsplash.com/...">
           </div>
-          <!-- Optional Video Embed -->
-          <div>
-            <label class="block text-xs font-bold text-stone-500 uppercase mb-1.5" for="project-video">Video Embed URL (Optional)</label>
-            <input type="url" id="project-video" class="w-full text-sm border border-stone-200 rounded p-2.5 bg-stone-50 focus:bg-white focus:outline-stone-500 transition-colors" placeholder="e.g. https://www.youtube.com/embed/...">
-          </div>
-        </div>
 
-        <!-- Rich Text WYSIWYG Description -->
-        <div>
-          <label class="block text-xs font-bold text-stone-500 uppercase mb-1.5">Project Description (Rich Text Editor)*</label>
-          <div class="border border-stone-200 rounded overflow-hidden">
-            <!-- Toolbar -->
-            <div class="bg-stone-100 border-b border-stone-200 px-3 py-2 flex flex-wrap gap-1 items-center">
-              <button type="button" onclick="formatText('bold')" class="px-2.5 py-1 text-xs font-bold bg-white hover:bg-stone-50 border border-stone-200 rounded shadow-sm">B</button>
-              <button type="button" onclick="formatText('italic')" class="px-2.5 py-1 text-xs italic bg-white hover:bg-stone-50 border border-stone-200 rounded shadow-sm">I</button>
-              <button type="button" onclick="formatText('insertUnorderedList')" class="px-2 py-1 text-xs bg-white hover:bg-stone-50 border border-stone-200 rounded shadow-sm">Bullet List</button>
-              <button type="button" onclick="formatText('insertOrderedList')" class="px-2 py-1 text-xs bg-white hover:bg-stone-50 border border-stone-200 rounded shadow-sm">Numbered List</button>
-              <div class="w-px h-5 bg-stone-300 mx-1"></div>
-              <button type="button" onclick="insertImage()" class="px-2 py-1 text-xs bg-stone-800 text-white hover:bg-stone-700 rounded shadow-sm flex items-center gap-1">
-                <span>📷 Add Image</span>
-              </button>
-            </div>
-            <!-- Editable Div -->
-            <div id="editor" contenteditable="true" class="p-3 min-h-[160px] max-h-[300px] overflow-y-auto bg-stone-50/50 focus:bg-white focus:outline-none text-sm text-stone-700 prose max-w-none" placeholder="Write description here..."></div>
-          </div>
-        </div>
-
-        <!-- Metadata Section -->
-        <div class="bg-stone-50 border border-stone-200 rounded p-4 space-y-4">
-          <p class="text-xs font-bold text-stone-600 tracking-wider uppercase">Project Information Sidebar</p>
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Tagline -->
             <div>
-              <label class="block text-[10px] font-bold text-stone-500 uppercase mb-1" for="meta-tools">Tools Used*</label>
-              <input type="text" id="meta-tools" required class="w-full text-xs border border-stone-200 rounded p-2 bg-white" placeholder="Sony FX3, DJI Mini 4">
+              <label class="block text-[10px] font-bold text-stone-500 uppercase mb-1.5" for="config-tagline">Hero Subheading (Tagline)*</label>
+              <input type="text" id="config-tagline" required class="w-full text-xs border border-stone-200 rounded p-2.5 bg-stone-50 focus:bg-white focus:outline-stone-500 transition-colors" placeholder="e.g. Creative Designer, Videographer & Editor">
             </div>
+            <!-- Footer Notes -->
             <div>
-              <label class="block text-[10px] font-bold text-stone-500 uppercase mb-1" for="meta-client">Client*</label>
-              <input type="text" id="meta-client" required class="w-full text-xs border border-stone-200 rounded p-2 bg-white" placeholder="Dilmah Tea / Personal">
-            </div>
-            <div>
-              <label class="block text-[10px] font-bold text-stone-500 uppercase mb-1" for="meta-agency">Agency*</label>
-              <input type="text" id="meta-agency" required class="w-full text-xs border border-stone-200 rounded p-2 bg-white" placeholder="Ogilvy / —">
+              <label class="block text-[10px] font-bold text-stone-500 uppercase mb-1.5" for="config-footer-notes">Footer Notes (Copyright)*</label>
+              <input type="text" id="config-footer-notes" required class="w-full text-xs border border-stone-200 rounded p-2.5 bg-stone-50 focus:bg-white focus:outline-stone-500 transition-colors" placeholder="e.g. © 2026 Nimantha Galhenage. All rights reserved.">
             </div>
           </div>
-        </div>
 
-        <button type="submit" class="w-full bg-stone-900 hover:bg-stone-850 text-white font-bold py-3 text-sm rounded shadow transition-colors">
-          Add Project Entry
-        </button>
-      </form>
+          <!-- Bio -->
+          <div>
+            <label class="block text-[10px] font-bold text-stone-500 uppercase mb-1.5" for="config-bio">Hero Description (Bio / About Intro)*</label>
+            <textarea id="config-bio" required rows="3" class="w-full text-xs border border-stone-200 rounded p-2.5 bg-stone-50 focus:bg-white focus:outline-stone-500 transition-colors leading-relaxed" placeholder="Write bio content here..."></textarea>
+          </div>
 
-      <!-- Import / Export Section -->
-      <div class="border-t border-stone-200 pt-6 mt-2 grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <h3 class="text-xs font-bold text-stone-700 uppercase mb-2">Import portfolioData Array</h3>
-          <textarea id="import-area" class="w-full h-24 border border-stone-200 rounded p-2 text-xs font-mono bg-stone-50 focus:bg-white" placeholder="Paste array string: [...] or copy existing portfolioData.js here..."></textarea>
-          <button id="btn-import" class="mt-2 text-xs font-semibold bg-stone-200 hover:bg-stone-300 text-stone-700 px-3 py-2 rounded transition-colors">
-            Load & Parse Data
+          <button type="submit" class="w-full bg-stone-900 hover:bg-stone-850 text-white font-bold py-2 text-xs uppercase tracking-wider rounded shadow transition-colors">
+            Update Site Settings
           </button>
+        </form>
+      </section>
+
+      <!-- ADD NEW PROJECT CARD -->
+      <section class="bg-white border border-stone-200 rounded-lg p-6 shadow-sm flex flex-col gap-6">
+        <div class="border-b border-stone-100 pb-4">
+          <h2 class="text-xs font-bold text-stone-900 uppercase tracking-wider">Add New Project</h2>
+          <p class="text-[11px] text-stone-500 mt-0.5">Input details to append a new workspace entry. Fields will auto-generate IDs.</p>
         </div>
-        <div class="flex flex-col justify-between">
-          <div>
-            <h3 class="text-xs font-bold text-stone-700 uppercase mb-2">Export Data File</h3>
-            <p class="text-xs text-stone-500 leading-relaxed">
-              Compile current changes and download the updated database. Simply save the output in your project folder to update the live site.
-            </p>
+
+        <form id="project-form" class="space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Title -->
+            <div>
+              <label class="block text-xs font-bold text-stone-500 uppercase mb-1.5" for="project-title">Project Title*</label>
+              <input type="text" id="project-title" required class="w-full text-sm border border-stone-200 rounded p-2.5 bg-stone-50 focus:bg-white focus:outline-stone-500 transition-colors" placeholder="e.g. Sunrise at Ella Rock">
+            </div>
+            <!-- Thumbnail URL -->
+            <div>
+              <label class="block text-xs font-bold text-stone-500 uppercase mb-1.5" for="project-cover">Thumbnail (Cover Image URL)*</label>
+              <input type="url" id="project-cover" required class="w-full text-sm border border-stone-200 rounded p-2.5 bg-stone-50 focus:bg-white focus:outline-stone-500 transition-colors" placeholder="https://images.unsplash.com/...">
+            </div>
           </div>
-          <button id="btn-export" class="mt-4 w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-2.5 text-xs uppercase tracking-wider rounded shadow transition-colors">
-            📥 Generate & Download portfolioData.js
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Category -->
+            <div>
+              <label class="block text-xs font-bold text-stone-500 uppercase mb-1.5" for="project-category">Category*</label>
+              <select id="project-category" required class="w-full text-sm border border-stone-200 rounded p-2.5 bg-stone-50 focus:bg-white focus:outline-stone-500 transition-colors">
+                <option value="" disabled selected>Select Category</option>
+                <option value="landscape">Landscape Photography</option>
+                <option value="architecture">Architecture Photography</option>
+                <option value="videography">Videography</option>
+              </select>
+            </div>
+            <!-- Optional Video Embed -->
+            <div>
+              <label class="block text-xs font-bold text-stone-500 uppercase mb-1.5" for="project-video">Video Embed URL (Optional)</label>
+              <input type="url" id="project-video" class="w-full text-sm border border-stone-200 rounded p-2.5 bg-stone-50 focus:bg-white focus:outline-stone-500 transition-colors" placeholder="e.g. https://www.youtube.com/embed/...">
+            </div>
+          </div>
+
+          <!-- Rich Text WYSIWYG Description -->
+          <div>
+            <label class="block text-xs font-bold text-stone-500 uppercase mb-1.5">Project Description (Rich Text Editor)*</label>
+            <div class="border border-stone-200 rounded overflow-hidden">
+              <!-- Toolbar -->
+              <div class="bg-stone-100 border-b border-stone-200 px-3 py-2 flex flex-wrap gap-1 items-center">
+                <button type="button" onclick="formatText('bold')" class="px-2.5 py-1 text-xs font-bold bg-white hover:bg-stone-50 border border-stone-200 rounded shadow-sm">B</button>
+                <button type="button" onclick="formatText('italic')" class="px-2.5 py-1 text-xs italic bg-white hover:bg-stone-50 border border-stone-200 rounded shadow-sm">I</button>
+                <button type="button" onclick="formatText('insertUnorderedList')" class="px-2 py-1 text-xs bg-white hover:bg-stone-50 border border-stone-200 rounded shadow-sm">Bullet List</button>
+                <button type="button" onclick="formatText('insertOrderedList')" class="px-2 py-1 text-xs bg-white hover:bg-stone-50 border border-stone-200 rounded shadow-sm">Numbered List</button>
+                <div class="w-px h-5 bg-stone-300 mx-1"></div>
+                <button type="button" onclick="insertImage()" class="px-2 py-1 text-xs bg-stone-800 text-white hover:bg-stone-700 rounded shadow-sm flex items-center gap-1">
+                  <span>📷 Add Image</span>
+                </button>
+              </div>
+              <!-- Editable Div -->
+              <div id="editor" contenteditable="true" class="p-3 min-h-[160px] max-h-[300px] overflow-y-auto bg-stone-50/50 focus:bg-white focus:outline-none text-sm text-stone-700 prose max-w-none" placeholder="Write description here..."></textarea>
+            </div>
+          </div>
+
+          <!-- Metadata Section -->
+          <div class="bg-stone-50 border border-stone-200 rounded p-4 space-y-4">
+            <p class="text-xs font-bold text-stone-600 tracking-wider uppercase">Project Information Sidebar</p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-[10px] font-bold text-stone-500 uppercase mb-1" for="meta-tools">Tools Used*</label>
+                <input type="text" id="meta-tools" required class="w-full text-xs border border-stone-200 rounded p-2 bg-white" placeholder="Sony FX3, DJI Mini 4">
+              </div>
+              <div>
+                <label class="block text-[10px] font-bold text-stone-500 uppercase mb-1" for="meta-client">Client*</label>
+                <input type="text" id="meta-client" required class="w-full text-xs border border-stone-200 rounded p-2 bg-white" placeholder="Dilmah Tea / Personal">
+              </div>
+              <div>
+                <label class="block text-[10px] font-bold text-stone-500 uppercase mb-1" for="meta-agency">Agency*</label>
+                <input type="text" id="meta-agency" required class="w-full text-xs border border-stone-200 rounded p-2 bg-white" placeholder="Ogilvy / —">
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="w-full bg-stone-900 hover:bg-stone-850 text-white font-bold py-3 text-sm rounded shadow transition-colors">
+            Add Project Entry
           </button>
+        </form>
+
+        <!-- Import / Export Section -->
+        <div class="border-t border-stone-200 pt-6 mt-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <h3 class="text-xs font-bold text-stone-700 uppercase mb-2">Import portfolioData Array</h3>
+            <textarea id="import-area" class="w-full h-24 border border-stone-200 rounded p-2 text-xs font-mono bg-stone-50 focus:bg-white" placeholder="Paste array string: [...] or copy existing portfolioData.js here..."></textarea>
+            <button id="btn-import" class="mt-2 text-xs font-semibold bg-stone-200 hover:bg-stone-300 text-stone-700 px-3 py-2 rounded transition-colors">
+              Load & Parse Data
+            </button>
+          </div>
+          <div class="flex flex-col justify-between">
+            <div>
+              <h3 class="text-xs font-bold text-stone-700 uppercase mb-2">Export Data File</h3>
+              <p class="text-xs text-stone-500 leading-relaxed">
+                Compile current changes and download the updated database. Simply save the output in your project folder to update the live site.
+              </p>
+            </div>
+            <button id="btn-export" class="mt-4 w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-2.5 text-xs uppercase tracking-wider rounded shadow transition-colors">
+              📥 Generate & Download portfolioData.js
+            </button>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
 
     <!-- RIGHT SCREEN: Real-time Active Projects List -->
     <section class="bg-white border border-stone-200 rounded-lg p-6 shadow-sm flex flex-col">
@@ -209,6 +252,7 @@
       tagline: "Creative Designer, Videographer & Editor",
       bio: "Photographer & Videographer based in Sri Lanka with 10+ years of experience...",
       heroImage: "https://img.magnific.com/free-photo/beautiful-lake-mountains_395237-44.jpg",
+      footerNotes: "© 2026 Nimantha Galhenage. All rights reserved.",
       contact: {
         email1: "hello@nimanthagalhenage.com",
         email2: "ngalhenage@gmail.com",
@@ -219,6 +263,9 @@
         linkedin: "#", facebook: "#", instagram: "#", behance: "#", youtube: "#"
       }
     };
+
+    // In-memory object containing active configuration
+    let activeConfig = {};
 
     const servicesDefaults = [
       {
@@ -440,11 +487,21 @@
     });
 
     /* ──────────────────────────────────────────────────────────
+       SITE CONFIGURATION UPDATE WORKFLOW
+    ────────────────────────────────────────────────────────── */
+    document.getElementById('config-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      activeConfig.heroImage = document.getElementById('config-hero-image').value.trim();
+      activeConfig.tagline = document.getElementById('config-tagline').value.trim();
+      activeConfig.bio = document.getElementById('config-bio').value.trim();
+      activeConfig.footerNotes = document.getElementById('config-footer-notes').value.trim();
+      alert('Site settings updated in memory! Remember to click "Generate & Download portfolioData.js" at the bottom to download the updated file.');
+    });
+
+    /* ──────────────────────────────────────────────────────────
        EXPORT FILE GENERATOR & DOWNLOAD
     ────────────────────────────────────────────────────────── */
     document.getElementById('btn-export').addEventListener('click', () => {
-      // Preserve loaded config, otherwise fall back to initial templates
-      const activeConfig = typeof SITE_CONFIG !== 'undefined' ? SITE_CONFIG : siteConfigDefaults;
       const activeServices = typeof SERVICES !== 'undefined' ? SERVICES : servicesDefaults;
 
       // Compile final code blocks structure
@@ -476,6 +533,15 @@ const portfolioData = ${JSON.stringify(activeProjects, null, 2)};
        ON PAGE LOAD INITIALIZATION
     ────────────────────────────────────────────────────────── */
     window.addEventListener('DOMContentLoaded', () => {
+      // Load configuration
+      activeConfig = typeof SITE_CONFIG !== 'undefined' ? { ...SITE_CONFIG } : { ...siteConfigDefaults };
+
+      // Populate config form inputs
+      document.getElementById('config-hero-image').value = activeConfig.heroImage || '';
+      document.getElementById('config-tagline').value = activeConfig.tagline || '';
+      document.getElementById('config-bio').value = activeConfig.bio || '';
+      document.getElementById('config-footer-notes').value = activeConfig.footerNotes || '';
+
       // Read array imported from portfolioData.js if present
       if (typeof portfolioData !== 'undefined' && Array.isArray(portfolioData)) {
         activeProjects = [...portfolioData];

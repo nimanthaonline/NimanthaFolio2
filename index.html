@@ -97,6 +97,43 @@
       /* text-stone-300 */
     }
 
+    /* ── Back to Top Button ── */
+    #back-to-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      padding: 10px 16px;
+      border-radius: 99px;
+      background: rgba(18, 16, 15, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px) scale(0.9);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 40;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+    }
+    #back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+    #back-to-top:hover {
+      background: rgba(18, 16, 15, 0.9);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-3px) scale(1.05);
+    }
+
     /* ── Hero ── */
     #hero {
       position: relative;
@@ -401,7 +438,7 @@
       <div class="relative z-10 max-w-screen-xl mx-auto w-full h-full px-6 lg:px-10 flex flex-col justify-center">
         <!-- Left-aligned Text Layout matching the mockup -->
         <div class="max-w-2xl text-white">
-          <p class="text-xs lg:text-sm font-bold tracking-[0.2em] text-white/90 uppercase mb-4 fade-in-up">
+          <p id="hero-tagline" class="text-xs lg:text-sm font-bold tracking-[0.2em] text-white/90 uppercase mb-4 fade-in-up">
             Creative Designer, Videographer & Editor
           </p>
 
@@ -411,9 +448,8 @@
             <span class="font-light text-white/90">Photography & Videography.</span>
           </h1>
 
-          <p class="text-sm lg:text-base text-white/80 max-w-md leading-relaxed font-normal fade-in-up delay-2">
-            Capturing moments, telling stories, from Sri Lanka to the world.<br />
-            10+ years of experience.
+          <p id="hero-bio" class="text-sm lg:text-base text-white/80 max-w-md leading-relaxed font-normal fade-in-up delay-2">
+            Photographer & Videographer based in Sri Lanka with 10+ years of experience.
           </p>
         </div>
       </div>
@@ -427,13 +463,30 @@
       role="navigation" aria-label="Main Navigation">
 
       <!-- Always visible top bar -->
-      <div class="w-full h-16 flex items-center justify-between">
-        <!-- Name Logo: NIMANTHA (bold) GALHENAGE (light) -->
-        <a href="#hero"
-          class="flex items-center text-white tracking-widest text-xs sm:text-sm lg:text-base transition-opacity hover:opacity-85"
-          aria-label="Home">
-          <span class="font-black">NIMANTHA</span><span class="font-light text-white/80 ml-1.5">GALHENAGE</span>
-        </a>
+      <div class="w-full min-h-[4rem] py-3 flex items-center justify-between">
+        <!-- Logo Column Wrapper (Desktop Logo, Mobile Logo + Sub-links) -->
+        <div class="flex flex-col justify-center">
+          <a href="#hero"
+            class="flex items-center text-white tracking-widest text-xs sm:text-sm lg:text-base transition-opacity hover:opacity-85"
+            aria-label="Home">
+            <span class="font-black">NIMANTHA</span><span class="font-light text-white/80 ml-1.5">GALHENAGE</span>
+          </a>
+          <!-- Mobile-only category links under logo -->
+          <div class="flex md:hidden items-center gap-3 text-[9px] uppercase tracking-wider font-semibold text-white/60 mt-1">
+            <a href="#landscape-section" class="hover:text-white transition-colors duration-200">Landscape</a>
+            <span class="text-white/20">|</span>
+            <a href="#architecture-section" class="hover:text-white transition-colors duration-200">Architecture</a>
+            <span class="text-white/20">|</span>
+            <a href="#videography-section" class="hover:text-white transition-colors duration-200">Videography</a>
+          </div>
+        </div>
+
+        <!-- Navigation Links (Desktop view, hidden on mobile) -->
+        <div class="hidden md:flex items-center gap-8 text-[11px] uppercase tracking-widest font-semibold text-white/70">
+          <a href="#landscape-section" class="hover:text-white transition-colors duration-200">Landscape</a>
+          <a href="#architecture-section" class="hover:text-white transition-colors duration-200">Architecture</a>
+          <a href="#videography-section" class="hover:text-white transition-colors duration-200">Videography</a>
+        </div>
 
         <!-- Social links (Desktop view, hidden on mobile) -->
         <div id="nav-socials" class="hidden md:flex items-center gap-4"></div>
@@ -449,7 +502,7 @@
         </button>
       </div>
 
-      <!-- Mobile dropdown content -->
+      <!-- Mobile dropdown content (Socials only) -->
       <div id="mobile-socials-dropdown"
         class="hidden md:hidden flex items-center justify-center gap-6 pb-4 border-t border-white/10 pt-3 w-full opacity-0 transition-opacity duration-300">
       </div>
@@ -490,7 +543,7 @@
       </div>
 
       <!-- LANDSCAPE GRID -->
-      <div class="mb-20">
+      <div id="landscape-section" class="mb-20">
         <div class="flex items-end justify-between mb-6 reveal">
           <div>
             <span class="text-xs font-bold text-stone-400 tracking-widest block mb-1">01 / PHOTO</span>
@@ -511,7 +564,7 @@
       <div class="w-full h-px bg-stone-200 my-20"></div>
 
       <!-- ARCHITECTURE GRID -->
-      <div class="mb-20">
+      <div id="architecture-section" class="mb-20">
         <div class="flex items-end justify-between mb-6 reveal">
           <div>
             <span class="text-xs font-bold text-stone-400 tracking-widest block mb-1">02 / STRUCTURE</span>
@@ -532,7 +585,7 @@
       <div class="w-full h-px bg-stone-200 my-20"></div>
 
       <!-- VIDEOGRAPHY GRID -->
-      <div>
+      <div id="videography-section">
         <div class="flex items-end justify-between mb-6 reveal">
           <div>
             <span class="text-xs font-bold text-stone-400 tracking-widest block mb-1">03 / MOTION</span>
@@ -629,6 +682,13 @@
     </div>
   </footer>
 
+  <!-- Back to Top Button -->
+  <button id="back-to-top" aria-label="Scroll back to top">
+    <svg class="w-3.5 h-3.5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+    </svg>
+    <span>Top</span>
+  </button>
 
   <!-- ═══════════════════════════════════════
      DATA + APP LOGIC
@@ -714,9 +774,17 @@
       fp.href = `tel:${c.phone.replace(/\s/g, '')}`; fp.textContent = c.phone;
       document.getElementById('footer-location').textContent = c.location;
 
-      // Copyright
+      // Dynamic settings injection (Hero texts)
+      if (SITE_CONFIG.tagline) {
+        document.getElementById('hero-tagline').textContent = SITE_CONFIG.tagline;
+      }
+      if (SITE_CONFIG.bio) {
+        document.getElementById('hero-bio').textContent = SITE_CONFIG.bio;
+      }
+
+      // Copyright / Footer notes
       document.getElementById('footer-copyright').textContent =
-        `© ${new Date().getFullYear()} ${SITE_CONFIG.name}. All rights reserved.`;
+        SITE_CONFIG.footerNotes || `© ${new Date().getFullYear()} ${SITE_CONFIG.name}. All rights reserved.`;
 
       // Populate footer bottom socials
       const footerBottomSocials = document.getElementById('footer-bottom-socials');
@@ -983,6 +1051,22 @@
               dropdown.classList.add('hidden');
             }, 300);
           }
+        });
+      }
+
+      // ── Back to Top Scroll Logic ──
+      const backToTopBtn = document.getElementById('back-to-top');
+      if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 400) {
+            backToTopBtn.classList.add('visible');
+          } else {
+            backToTopBtn.classList.remove('visible');
+          }
+        }, { passive: true });
+
+        backToTopBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       }
     });
