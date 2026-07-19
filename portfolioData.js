@@ -10,6 +10,7 @@ const SITE_CONFIG = {
   "tagline": "Landscape, Architecture Photographer, Creative Designer, Videographer & Editor",
   "bio": "Photographer & Videographer based in Sri Lanka with 10+ years of experience creating compelling visual content. I specialize in landscape and architecture photography, along with real estate, events, reels, and commercial videography — crafting visuals that combine creativity, storytelling, and attention to detail.",
   "heroImage": "https://img.magnific.com/free-photo/beautiful-lake-mountains_395237-44.jpg",
+  "comingSoonMode": true,
   "footerNotes": "© 2026 Nimantha Galhenage. All rights reserved.",
   "contact": {
     "email1": "hello@nimanthagalhenage.com",

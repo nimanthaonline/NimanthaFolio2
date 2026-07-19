@@ -81,10 +81,17 @@
         </div>
 
         <form id="config-form" class="space-y-4">
-          <!-- Hero Image -->
-          <div>
-            <label class="block text-[10px] font-bold text-stone-500 uppercase mb-1.5" for="config-hero-image">Hero Background Image URL*</label>
-            <input type="url" id="config-hero-image" required class="w-full text-xs border border-stone-200 rounded p-2.5 bg-stone-50 focus:bg-white focus:outline-stone-500 transition-colors" placeholder="https://images.unsplash.com/...">
+          <!-- Hero Image & Coming Soon Toggle -->
+          <div class="grid grid-cols-1 sm:grid-cols-[2fr_1fr] gap-4 items-end">
+            <div>
+              <label class="block text-[10px] font-bold text-stone-500 uppercase mb-1.5" for="config-hero-image">Hero Background Image URL*</label>
+              <input type="url" id="config-hero-image" required class="w-full text-xs border border-stone-200 rounded p-2.5 bg-stone-50 focus:bg-white focus:outline-stone-500 transition-colors" placeholder="https://images.unsplash.com/...">
+            </div>
+            <!-- Coming Soon Mode Switch -->
+            <div class="flex items-center justify-between p-2.5 bg-stone-50 border border-stone-200 rounded h-[38px]">
+              <label class="text-[10px] font-bold text-stone-500 uppercase cursor-pointer select-none" for="config-coming-soon">Coming Soon Mode</label>
+              <input type="checkbox" id="config-coming-soon" class="w-4 h-4 accent-stone-900 cursor-pointer">
+            </div>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -252,6 +259,7 @@
       tagline: "Creative Designer, Videographer & Editor",
       bio: "Photographer & Videographer based in Sri Lanka with 10+ years of experience...",
       heroImage: "https://img.magnific.com/free-photo/beautiful-lake-mountains_395237-44.jpg",
+      comingSoonMode: false,
       footerNotes: "© 2026 Nimantha Galhenage. All rights reserved.",
       contact: {
         email1: "hello@nimanthagalhenage.com",
@@ -492,6 +500,7 @@
     document.getElementById('config-form').addEventListener('submit', (e) => {
       e.preventDefault();
       activeConfig.heroImage = document.getElementById('config-hero-image').value.trim();
+      activeConfig.comingSoonMode = document.getElementById('config-coming-soon').checked;
       activeConfig.tagline = document.getElementById('config-tagline').value.trim();
       activeConfig.bio = document.getElementById('config-bio').value.trim();
       activeConfig.footerNotes = document.getElementById('config-footer-notes').value.trim();
@@ -538,6 +547,7 @@ const portfolioData = ${JSON.stringify(activeProjects, null, 2)};
 
       // Populate config form inputs
       document.getElementById('config-hero-image').value = activeConfig.heroImage || '';
+      document.getElementById('config-coming-soon').checked = activeConfig.comingSoonMode || false;
       document.getElementById('config-tagline').value = activeConfig.tagline || '';
       document.getElementById('config-bio').value = activeConfig.bio || '';
       document.getElementById('config-footer-notes').value = activeConfig.footerNotes || '';

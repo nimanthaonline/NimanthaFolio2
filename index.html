@@ -417,7 +417,7 @@
 
 <body class="font-sans bg-stone-50 text-stone-800 antialiased overflow-x-hidden">
 
-  <div class="relative">
+  <div id="main-portfolio-content" class="relative">
     <!-- ═══════════════════════════════════════
        HERO SECTION (Matches Mockup Layout)
   ═══════════════════════════════════════ -->
@@ -690,9 +690,65 @@
     <span>Top</span>
   </button>
 
+  </div> <!-- /#main-portfolio-content -->
+
+  <!-- ═══════════════════════════════════════
+     COMING SOON SCREEN OVERLAY
+  ═══════════════════════════════════════ -->
+  <div id="coming-soon-screen" class="fixed inset-0 bg-stone-950 text-white items-center justify-center z-[100] overflow-hidden" style="display: none;">
+    <!-- Background Cover Image -->
+    <img id="cs-bg-cover" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-1000" alt="Beautiful landscape" />
+    <div class="absolute inset-0 bg-black/55 pointer-events-none"></div>
+    <div class="absolute inset-0 bg-grain opacity-30 pointer-events-none"></div>
+
+    <!-- Content Container -->
+    <div class="relative z-10 max-w-lg w-full px-6 text-center">
+      <div class="bg-stone-900/45 border border-white/16 shadow-2xl rounded-[32px] p-8 md:p-12 backdrop-blur-md">
+        
+        <!-- Name Logo -->
+        <div class="flex justify-center mb-8">
+          <div class="tracking-widest text-sm md:text-base border-b border-white/10 pb-4 w-full flex justify-center items-center">
+            <span class="font-black text-white">NIMANTHA</span>
+            <span class="font-light text-white/70 ml-1.5">GALHENAGE</span>
+          </div>
+        </div>
+
+        <!-- Tagline -->
+        <p id="cs-tagline" class="text-[10px] md:text-xs font-bold tracking-[0.25em] text-white/60 uppercase mb-4">
+          Coming Soon
+        </p>
+
+        <!-- Title -->
+        <h1 class="text-2xl md:text-3xl font-black tracking-tight leading-snug mb-5">
+          A New Visual Experience<br />
+          Is Being Curated.
+        </h1>
+
+        <!-- Bio -->
+        <p id="cs-bio" class="text-xs md:text-sm text-white/80 leading-relaxed mb-8 max-w-sm mx-auto">
+          Photographer & Videographer based in Sri Lanka.
+        </p>
+
+        <!-- Contact Button -->
+        <div class="mb-8">
+          <a id="cs-btn-email" href="#" class="inline-block bg-white hover:bg-stone-100 text-stone-900 font-bold text-xs uppercase tracking-wider px-8 py-3 rounded-full shadow transition-all duration-300 transform hover:-translate-y-0.5">
+            Get In Touch
+          </a>
+        </div>
+
+        <!-- Social Links Row -->
+        <div class="flex flex-col items-center gap-3">
+          <p class="text-[9px] uppercase tracking-widest text-white/40 font-bold">Connect In The Meantime</p>
+          <div id="cs-socials-row" class="flex items-center gap-5"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <!-- ═══════════════════════════════════════
      DATA + APP LOGIC
-═══════════════════════════════════════ -->
+  ═══════════════════════════════════════ -->
   <script>
     /* ──────────────────────────────────────────────────────────
        ICON HELPERS
@@ -716,6 +772,47 @@
        BOOTSTRAP — Inject config values
     ────────────────────────────────────────────────────────── */
     function bootstrap() {
+      // ── Coming Soon Mode Toggle Logic ──
+      if (SITE_CONFIG.comingSoonMode) {
+        document.getElementById('main-portfolio-content').style.display = 'none';
+        document.getElementById('coming-soon-screen').style.display = 'flex';
+        document.body.classList.add('overflow-hidden');
+
+        // Populate coming soon screen elements
+        if (SITE_CONFIG.heroImage) {
+          document.getElementById('cs-bg-cover').src = SITE_CONFIG.heroImage;
+        }
+        if (SITE_CONFIG.bio) {
+          document.getElementById('cs-bio').textContent = SITE_CONFIG.bio;
+        }
+        if (SITE_CONFIG.contact && SITE_CONFIG.contact.email1) {
+          document.getElementById('cs-btn-email').href = `mailto:${SITE_CONFIG.contact.email1}`;
+        }
+
+        // Populate coming soon socials
+        const socialKeys = ['linkedin', 'facebook', 'instagram', 'behance', 'youtube'];
+        const csSocialsRow = document.getElementById('cs-socials-row');
+        csSocialsRow.innerHTML = ''; // Clear previous
+        socialKeys.forEach(key => {
+          if (SITE_CONFIG.social[key]) {
+            const a = document.createElement('a');
+            a.href = SITE_CONFIG.social[key];
+            a.target = '_blank';
+            a.rel = 'noopener';
+            a.className = 'text-white/60 hover:text-white transition-colors duration-200';
+            a.setAttribute('aria-label', key);
+            a.innerHTML = SOCIAL_ICONS_SVG[key];
+            csSocialsRow.appendChild(a);
+          }
+        });
+        return; // HALT executing the rest of the portfolio bootstrap
+      }
+
+      // Normal mode setup:
+      document.getElementById('main-portfolio-content').style.display = 'block';
+      document.getElementById('coming-soon-screen').style.display = 'none';
+      document.body.classList.remove('overflow-hidden');
+
       // Try to use mockup hero image from config if set, otherwise fallback
       if (SITE_CONFIG.heroImage) {
         document.getElementById('hero-bg-image').src = SITE_CONFIG.heroImage;
