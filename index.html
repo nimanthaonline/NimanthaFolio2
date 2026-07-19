@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nimantha Galhenage — Photography & Videography | Sri Lanka</title>
-  <meta name="description" content="Photographer & Videographer based in Sri Lanka with 10+ years of experience. Specialising in landscape, architecture photography, real estate, events, reels, and commercial videography." />
+  <meta name="description"
+    content="Photographer & Videographer based in Sri Lanka with 10+ years of experience. Specialising in landscape, architecture photography, real estate, events, reels, and commercial videography." />
   <meta property="og:title" content="Nimantha Galhenage — Photography & Videography" />
-  <meta property="og:description" content="Creating compelling visual content through landscape & architecture photography and cinematic videography." />
+  <meta property="og:description"
+    content="Creating compelling visual content through landscape & architecture photography and cinematic videography." />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -34,31 +38,60 @@
     };
   </script>
   <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     /* ── Scrollbar ── */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #f5f5f4; }
-    ::-webkit-scrollbar-thumb { background: #a8a29e; border-radius: 99px; }
-
-    /* ── Floating Capsule Nav ── */
-    .nav-capsule {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(28px) saturate(190%);
-      -webkit-backdrop-filter: blur(28px) saturate(190%);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      box-shadow: 0 20px 40px -6px rgba(0, 0, 0, 0.35), 0 8px 16px -4px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.2);
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    ::-webkit-scrollbar {
+      width: 6px;
     }
-    
-    /* When navbar sticks to top */
+
+    ::-webkit-scrollbar-track {
+      background: #f5f5f4;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #a8a29e;
+      border-radius: 99px;
+    }
+
+    /* ── Floating Capsule Nav (iOS Clear Glass with Light Blur) ── */
+    .nav-capsule {
+      background: rgba(18, 16, 15, 0.3);
+      backdrop-filter: blur(16px) saturate(130%);
+      -webkit-backdrop-filter: blur(16px) saturate(130%);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: 
+        0 15px 35px -5px rgba(0, 0, 0, 0.25), 
+        inset 0 1px 2px rgba(255, 255, 255, 0.25);
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* When navbar sticks to top (Clear Dark Glass with Light Blur) */
     .nav-capsule.scrolled {
-      background: rgba(28, 25, 23, 0.9);
-      border-color: rgba(255, 255, 255, 0.1);
-      box-shadow: 0 20px 40px -6px rgba(0, 0, 0, 0.5), 0 8px 16px -4px rgba(0, 0, 0, 0.3);
+      background: rgba(18, 16, 15, 0.65);
+      backdrop-filter: blur(16px) saturate(130%);
+      -webkit-backdrop-filter: blur(16px) saturate(130%);
+      border-color: rgba(255, 255, 255, 0.12);
+      box-shadow: 
+        0 20px 40px -6px rgba(0, 0, 0, 0.35), 
+        inset 0 1px 1px rgba(255, 255, 255, 0.2);
       transform: translate(-50%, 0) scale(0.98);
       top: 16px;
+    }
+
+    /* Mobile social links color logic (white contrast on dark glass) */
+    .mobile-social-link {
+      color: #ffffff; /* text-white */
+      transition: color 0.2s ease;
+    }
+    .mobile-social-link:hover {
+      color: #d6d3d1; /* text-stone-300 */
     }
 
     /* ── Hero ── */
@@ -68,13 +101,13 @@
       min-height: 580px;
       overflow: hidden;
     }
-    
+
     /* Gradient overlay for hero readability */
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%),
-                  linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 40%);
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.1) 100%),
+        linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, transparent 40%);
       pointer-events: none;
     }
 
@@ -88,22 +121,29 @@
       overflow: hidden;
       transition: box-shadow 0.35s ease, transform 0.35s ease, border-color 0.35s ease;
     }
+
     .service-card::before {
       content: '';
       position: absolute;
-      bottom: 0; left: 0; right: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
       height: 3px;
       background: linear-gradient(90deg, #ca8a04, #eab308, #fde047);
       transform: scaleX(0);
       transform-origin: left;
-      transition: transform 0.45s cubic-bezier(.22,1,.36,1);
+      transition: transform 0.45s cubic-bezier(.22, 1, .36, 1);
     }
+
     .service-card:hover {
-      box-shadow: 0 20px 60px rgba(0,0,0,0.09);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.09);
       transform: translateY(-4px);
       border-color: transparent;
     }
-    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
 
     /* ── Portfolio grid ── */
     .portfolio-grid {
@@ -111,11 +151,17 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 10px;
     }
+
     @media (max-width: 1023px) {
-      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
+
     @media (max-width: 479px) {
-      .portfolio-grid { grid-template-columns: repeat(1, 1fr); }
+      .portfolio-grid {
+        grid-template-columns: repeat(1, 1fr);
+      }
     }
 
     /* ── Portfolio item ── */
@@ -126,49 +172,60 @@
       cursor: pointer;
       background: #e7e5e4;
     }
+
     .portfolio-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.65s cubic-bezier(.22,1,.36,1);
+      transition: transform 0.65s cubic-bezier(.22, 1, .36, 1);
     }
-    .portfolio-item:hover img { transform: scale(1.07); }
+
+    .portfolio-item:hover img {
+      transform: scale(1.07);
+    }
+
     .portfolio-item-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(28,25,23,0.85) 0%, rgba(28,25,23,0.1) 50%, transparent 100%);
+      background: linear-gradient(to top, rgba(28, 25, 23, 0.85) 0%, rgba(28, 25, 23, 0.1) 50%, transparent 100%);
       opacity: 0;
       transition: opacity 0.35s ease;
       display: flex;
       align-items: flex-end;
       padding: 1.25rem;
     }
-    .portfolio-item:hover .portfolio-item-overlay { opacity: 1; }
+
+    .portfolio-item:hover .portfolio-item-overlay {
+      opacity: 1;
+    }
+
     .portfolio-item-title {
       font-size: 0.875rem;
       font-weight: 600;
       color: #fff;
       line-height: 1.3;
     }
+
     .portfolio-item .play-badge {
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%,-50%);
+      transform: translate(-50%, -50%);
       width: 48px;
       height: 48px;
-      background: rgba(255,255,255,0.2);
+      background: rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(8px);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1.5px solid rgba(255,255,255,0.45);
+      border: 1.5px solid rgba(255, 255, 255, 0.45);
       transition: background 0.3s, transform 0.3s;
     }
+
     .portfolio-item:hover .play-badge {
-      background: rgba(255,255,255,0.3);
-      transform: translate(-50%,-50%) scale(1.12);
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%) scale(1.12);
     }
 
     /* ── Show more button ── */
@@ -188,12 +245,16 @@
       background: #fff;
       cursor: pointer;
     }
+
     .btn-show-more:hover {
       background: #1c1917;
       color: #fff;
       border-color: #1c1917;
     }
-    .btn-show-more.hidden { display: none; }
+
+    .btn-show-more.hidden {
+      display: none;
+    }
 
     /* ── Modal ── */
     #project-modal {
@@ -206,17 +267,20 @@
       pointer-events: none;
       transition: opacity 0.35s ease;
     }
+
     #project-modal.open {
       opacity: 1;
       pointer-events: all;
     }
+
     #modal-backdrop {
       position: absolute;
       inset: 0;
-      background: rgba(12,10,9,0.75);
+      background: rgba(12, 10, 9, 0.75);
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
     }
+
     #modal-panel {
       position: relative;
       z-index: 1;
@@ -226,10 +290,13 @@
       margin: 0 auto;
       overflow-y: auto;
       transform: translateY(40px);
-      transition: transform 0.45s cubic-bezier(.22,1,.36,1);
+      transition: transform 0.45s cubic-bezier(.22, 1, .36, 1);
       max-height: 100svh;
     }
-    #project-modal.open #modal-panel { transform: translateY(0); }
+
+    #project-modal.open #modal-panel {
+      transform: translateY(0);
+    }
 
     /* ── Modal gallery ── */
     .modal-gallery {
@@ -237,9 +304,13 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 8px;
     }
+
     @media (max-width: 639px) {
-      .modal-gallery { grid-template-columns: 1fr; }
+      .modal-gallery {
+        grid-template-columns: 1fr;
+      }
     }
+
     .modal-gallery img {
       width: 100%;
       aspect-ratio: 16/10;
@@ -248,22 +319,40 @@
 
     /* ── Animations ── */
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(32px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(32px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
+
     .fade-in-up {
-      animation: fadeInUp 0.9s cubic-bezier(.22,1,.36,1) both;
+      animation: fadeInUp 0.9s cubic-bezier(.22, 1, .36, 1) both;
     }
-    .delay-1 { animation-delay: 0.1s; }
-    .delay-2 { animation-delay: 0.25s; }
-    .delay-3 { animation-delay: 0.4s; }
+
+    .delay-1 {
+      animation-delay: 0.1s;
+    }
+
+    .delay-2 {
+      animation-delay: 0.25s;
+    }
+
+    .delay-3 {
+      animation-delay: 0.4s;
+    }
 
     /* ── Intersection observer reveal ── */
     .reveal {
       opacity: 0;
       transform: translateY(28px);
-      transition: opacity 0.8s cubic-bezier(.22,1,.36,1), transform 0.8s cubic-bezier(.22,1,.36,1);
+      transition: opacity 0.8s cubic-bezier(.22, 1, .36, 1), transform 0.8s cubic-bezier(.22, 1, .36, 1);
     }
+
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
@@ -287,419 +376,468 @@
 
 <body class="font-sans bg-stone-50 text-stone-800 antialiased overflow-x-hidden">
 
-<div class="relative">
-  <!-- ═══════════════════════════════════════
+  <div class="relative">
+    <!-- ═══════════════════════════════════════
        HERO SECTION (Matches Mockup Layout)
   ═══════════════════════════════════════ -->
-  <section id="hero" aria-label="Introduction">
-    <!-- Full-bleed background image -->
-    <img id="hero-bg-image" class="absolute inset-0 w-full h-full object-cover object-center" src="https://images.unsplash.com/photo-1542224566-6e85f2e6772f?w=1920&q=80" alt="Nimantha Galhenage Cinematic Portrait" />
-    
-    <!-- Overlay to protect white text readability -->
-    <div class="hero-overlay"></div>
-    
-    <div class="absolute inset-0 bg-grain opacity-40 pointer-events-none"></div>
+    <section id="hero" aria-label="Introduction">
+      <!-- Full-bleed background image -->
+      <img id="hero-bg-image" class="absolute inset-0 w-full h-full object-cover object-center"
+        src="https://images.unsplash.com/photo-1542224566-6e85f2e6772f?w=1920&q=80"
+        alt="Nimantha Galhenage Cinematic Portrait" />
 
-    <div class="relative z-10 max-w-screen-xl mx-auto w-full h-full px-6 lg:px-10 flex flex-col justify-center">
-      <!-- Left-aligned Text Layout matching the mockup -->
-      <div class="max-w-2xl text-white">
-        <p class="text-xs lg:text-sm font-bold tracking-[0.2em] text-white/90 uppercase mb-4 fade-in-up">
-          Creative Designer, Videographer & Editor
-        </p>
+      <!-- Overlay to protect white text readability -->
+      <div class="hero-overlay"></div>
 
-        <h1 class="font-sans font-black leading-[1.1] mb-6 fade-in-up delay-1 tracking-tight" style="font-size: clamp(2.2rem, 5vw, 4rem);">
-          NIMANTHA GALHENAGE.<br/>
-          <span class="font-light text-white/90">Photography & Videography.</span>
-        </h1>
+      <div class="absolute inset-0 bg-grain opacity-40 pointer-events-none"></div>
 
-        <p class="text-sm lg:text-base text-white/80 max-w-md leading-relaxed font-normal fade-in-up delay-2">
-          Capturing moments, telling stories, from Sri Lanka to the world.<br/>
-          10+ years of experience.
-        </p>
+      <div class="relative z-10 max-w-screen-xl mx-auto w-full h-full px-6 lg:px-10 flex flex-col justify-center">
+        <!-- Left-aligned Text Layout matching the mockup -->
+        <div class="max-w-2xl text-white">
+          <p class="text-xs lg:text-sm font-bold tracking-[0.2em] text-white/90 uppercase mb-4 fade-in-up">
+            Creative Designer, Videographer & Editor
+          </p>
+
+          <h1 class="font-sans font-black leading-[1.1] mb-6 fade-in-up delay-1 tracking-tight"
+            style="font-size: clamp(2.2rem, 5vw, 4rem);">
+            NIMANTHA GALHENAGE.<br />
+            <span class="font-light text-white/90">Photography & Videography.</span>
+          </h1>
+
+          <p class="text-sm lg:text-base text-white/80 max-w-md leading-relaxed font-normal fade-in-up delay-2">
+            Capturing moments, telling stories, from Sri Lanka to the world.<br />
+            10+ years of experience.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+       FLOATING CAPSULE NAVIGATION BAR
+  ═══════════════════════════════════════ -->
+    <nav id="navbar"
+      class="nav-capsule absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-[calc(100%-3rem)] max-w-5xl rounded-[32px] px-6 transition-all duration-300 z-50 flex flex-col justify-center overflow-hidden"
+      role="navigation" aria-label="Main Navigation">
+
+      <!-- Always visible top bar -->
+      <div class="w-full h-16 flex items-center justify-between">
+        <!-- Name Logo: NIMANTHA (bold) GALHENAGE (light) -->
+        <a href="#hero"
+          class="flex items-center text-white tracking-widest text-xs sm:text-sm lg:text-base transition-opacity hover:opacity-85"
+          aria-label="Home">
+          <span class="font-black">NIMANTHA</span><span class="font-light text-white/80 ml-1.5">GALHENAGE</span>
+        </a>
+
+        <!-- Social links (Desktop view, hidden on mobile) -->
+        <div id="nav-socials" class="hidden md:flex items-center gap-4"></div>
+
+        <!-- Dropdown trigger (Mobile view, hidden on desktop) -->
+        <button id="mobile-socials-toggle" class="flex md:hidden text-white p-1 hover:text-stone-300 focus:outline-none transition-colors" aria-label="Toggle socials menu">
+          <svg id="mobile-socials-chevron" class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile dropdown content -->
+      <div id="mobile-socials-dropdown" class="hidden md:hidden flex items-center justify-center gap-6 pb-4 border-t border-white/10 pt-3 w-full opacity-0 transition-opacity duration-300"></div>
+    </nav>
+  </div>
+
+  <!-- Spacer to prevent content overlapping the floated nav capsule -->
+  <div class="h-12 bg-white"></div>
+
+  <!-- ═══════════════════════════════════════
+     INTROSECTION (Split Portfolio & Services)
+═══════════════════════════════════════ -->
+  <section class="py-16 bg-white border-b border-stone-100">
+    <div class="max-w-screen-xl mx-auto px-6 lg:px-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24">
+        <div>
+          <h2 class="text-xl font-bold text-stone-900 mb-3">Portfolio</h2>
+          <p class="text-stone-500 text-sm leading-relaxed max-w-md">
+            Explore a curated collection of fine art landscapes, architectural studies, and cinematic commercial reels
+            captured across Sri Lanka and beyond.
+          </p>
+        </div>
+        <div>
+          <h2 class="text-xl font-bold text-stone-900 mb-3">Services</h2>
+          <p class="text-stone-500 text-sm leading-relaxed max-w-md">
+            Delivering high-end photography, videography, and post-production solutions that balance aesthetic beauty
+            with powerful narrative flow.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
+
   <!-- ═══════════════════════════════════════
-       FLOATING CAPSULE NAVIGATION BAR
-  ═══════════════════════════════════════ -->
-  <nav id="navbar" class="nav-capsule absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-[calc(100%-3rem)] max-w-5xl h-16 rounded-full px-6 flex items-center justify-between z-50" role="navigation" aria-label="Main Navigation">
-    
-    <!-- Name Logo: NIMANTHA (bold) GALHENAGE (light) -->
-    <a href="#hero" class="flex items-center text-white tracking-widest text-xs sm:text-sm lg:text-base transition-opacity hover:opacity-85" aria-label="Home">
-      <span class="font-black">NIMANTHA</span><span class="font-light text-white/80 ml-1.5">GALHENAGE</span>
-    </a>
-
-    <!-- Social links -->
-    <div id="nav-socials" class="flex items-center gap-4"></div>
-  </nav>
-</div>
-
-<!-- Spacer to prevent content overlapping the floated nav capsule -->
-<div class="h-12 bg-white"></div>
-
-<!-- ═══════════════════════════════════════
-     INTROSECTION (Split Portfolio & Services)
-═══════════════════════════════════════ -->
-<section class="py-16 bg-white border-b border-stone-100">
-  <div class="max-w-screen-xl mx-auto px-6 lg:px-10">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24">
-      <div>
-        <h2 class="text-xl font-bold text-stone-900 mb-3">Portfolio</h2>
-        <p class="text-stone-500 text-sm leading-relaxed max-w-md">
-          Explore a curated collection of fine art landscapes, architectural studies, and cinematic commercial reels captured across Sri Lanka and beyond.
-        </p>
-      </div>
-      <div>
-        <h2 class="text-xl font-bold text-stone-900 mb-3">Services</h2>
-        <p class="text-stone-500 text-sm leading-relaxed max-w-md">
-          Delivering high-end photography, videography, and post-production solutions that balance aesthetic beauty with powerful narrative flow.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════
      SERVICES DETAILS
 ═══════════════════════════════════════ -->
-<section id="services" class="py-24 bg-white" aria-label="Services Detail">
-  <div class="max-w-screen-xl mx-auto px-6 lg:px-10">
-    <div class="max-w-xl mb-16 reveal">
-      <p class="text-xs font-bold tracking-[0.2em] text-stone-400 uppercase mb-3">Professional Offerings</p>
-      <h2 class="text-3xl font-black text-stone-900 tracking-tight">Core Services</h2>
+  <section id="services" class="py-24 bg-white" aria-label="Services Detail">
+    <div class="max-w-screen-xl mx-auto px-6 lg:px-10">
+      <div class="max-w-xl mb-16 reveal">
+        <p class="text-xs font-bold tracking-[0.2em] text-stone-400 uppercase mb-3">Professional Offerings</p>
+        <h2 class="text-3xl font-black text-stone-900 tracking-tight">Core Services</h2>
+      </div>
+
+      <!-- Cards -->
+      <div id="services-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
     </div>
-
-    <!-- Cards -->
-    <div id="services-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-  </div>
-</section>
+  </section>
 
 
-<!-- ═══════════════════════════════════════
+  <!-- ═══════════════════════════════════════
      PORTFOLIO GRIDS
 ═══════════════════════════════════════ -->
-<section id="portfolio" class="py-24 bg-stone-50" aria-label="Portfolio Grids">
-  <div class="max-w-screen-xl mx-auto px-6 lg:px-10">
+  <section id="portfolio" class="py-24 bg-stone-50" aria-label="Portfolio Grids">
+    <div class="max-w-screen-xl mx-auto px-6 lg:px-10">
 
-    <div class="max-w-xl mb-20 reveal">
-      <p class="text-xs font-bold tracking-[0.2em] text-stone-400 uppercase mb-3">Selected Collections</p>
-      <h2 class="text-3xl font-black text-stone-900 tracking-tight">Project Showcases</h2>
-    </div>
+      <div class="max-w-xl mb-20 reveal">
+        <p class="text-xs font-bold tracking-[0.2em] text-stone-400 uppercase mb-3">Selected Collections</p>
+        <h2 class="text-3xl font-black text-stone-900 tracking-tight">Project Showcases</h2>
+      </div>
 
-    <!-- LANDSCAPE GRID -->
-    <div class="mb-20">
-      <div class="flex items-end justify-between mb-6 reveal">
-        <div>
-          <span class="text-xs font-bold text-stone-400 tracking-widest block mb-1">01 / PHOTO</span>
-          <h3 class="text-xl font-bold text-stone-900">Landscape Photography</h3>
+      <!-- LANDSCAPE GRID -->
+      <div class="mb-20">
+        <div class="flex items-end justify-between mb-6 reveal">
+          <div>
+            <span class="text-xs font-bold text-stone-400 tracking-widest block mb-1">01 / PHOTO</span>
+            <h3 class="text-xl font-bold text-stone-900">Landscape Photography</h3>
+          </div>
+        </div>
+        <div id="grid-landscape" class="portfolio-grid mb-6"></div>
+        <div class="text-center mt-6">
+          <button id="more-landscape" class="btn-show-more" data-category="landscape">
+            <span>Show More</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M12 5v14M5 12l7 7 7-7" />
+            </svg>
+          </button>
         </div>
       </div>
-      <div id="grid-landscape" class="portfolio-grid mb-6"></div>
-      <div class="text-center mt-6">
-        <button id="more-landscape" class="btn-show-more" data-category="landscape">
-          <span>Show More</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-        </button>
-      </div>
-    </div>
 
-    <div class="w-full h-px bg-stone-200 my-20"></div>
+      <div class="w-full h-px bg-stone-200 my-20"></div>
 
-    <!-- ARCHITECTURE GRID -->
-    <div class="mb-20">
-      <div class="flex items-end justify-between mb-6 reveal">
-        <div>
-          <span class="text-xs font-bold text-stone-400 tracking-widest block mb-1">02 / STRUCTURE</span>
-          <h3 class="text-xl font-bold text-stone-900">Architecture Photography</h3>
+      <!-- ARCHITECTURE GRID -->
+      <div class="mb-20">
+        <div class="flex items-end justify-between mb-6 reveal">
+          <div>
+            <span class="text-xs font-bold text-stone-400 tracking-widest block mb-1">02 / STRUCTURE</span>
+            <h3 class="text-xl font-bold text-stone-900">Architecture Photography</h3>
+          </div>
+        </div>
+        <div id="grid-architecture" class="portfolio-grid mb-6"></div>
+        <div class="text-center mt-6">
+          <button id="more-architecture" class="btn-show-more" data-category="architecture">
+            <span>Show More</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M12 5v14M5 12l7 7 7-7" />
+            </svg>
+          </button>
         </div>
       </div>
-      <div id="grid-architecture" class="portfolio-grid mb-6"></div>
-      <div class="text-center mt-6">
-        <button id="more-architecture" class="btn-show-more" data-category="architecture">
-          <span>Show More</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-        </button>
-      </div>
-    </div>
 
-    <div class="w-full h-px bg-stone-200 my-20"></div>
+      <div class="w-full h-px bg-stone-200 my-20"></div>
 
-    <!-- VIDEOGRAPHY GRID -->
-    <div>
-      <div class="flex items-end justify-between mb-6 reveal">
-        <div>
-          <span class="text-xs font-bold text-stone-400 tracking-widest block mb-1">03 / MOTION</span>
-          <h3 class="text-xl font-bold text-stone-900">Videography & Films</h3>
+      <!-- VIDEOGRAPHY GRID -->
+      <div>
+        <div class="flex items-end justify-between mb-6 reveal">
+          <div>
+            <span class="text-xs font-bold text-stone-400 tracking-widest block mb-1">03 / MOTION</span>
+            <h3 class="text-xl font-bold text-stone-900">Videography & Films</h3>
+          </div>
+        </div>
+        <div id="grid-videography" class="portfolio-grid mb-6"></div>
+        <div class="text-center mt-6">
+          <button id="more-videography" class="btn-show-more" data-category="videography">
+            <span>Show More</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M12 5v14M5 12l7 7 7-7" />
+            </svg>
+          </button>
         </div>
       </div>
-      <div id="grid-videography" class="portfolio-grid mb-6"></div>
-      <div class="text-center mt-6">
-        <button id="more-videography" class="btn-show-more" data-category="videography">
-          <span>Show More</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-        </button>
-      </div>
+
     </div>
-
-  </div>
-</section>
+  </section>
 
 
-<!-- ═══════════════════════════════════════
+  <!-- ═══════════════════════════════════════
      PROJECT MODAL
 ═══════════════════════════════════════ -->
-<div id="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-  <div id="modal-backdrop"></div>
-  <div id="modal-panel">
+  <div id="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div id="modal-backdrop"></div>
+    <div id="modal-panel">
 
-    <button id="modal-close" class="absolute top-5 right-5 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-stone-100 hover:bg-stone-200 transition-colors" aria-label="Close project">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-    </button>
+      <button id="modal-close"
+        class="absolute top-5 right-5 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-stone-100 hover:bg-stone-200 transition-colors"
+        aria-label="Close project">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <path d="M18 6L6 18M6 6l12 12" />
+        </svg>
+      </button>
 
-    <div id="modal-content" class="p-0"></div>
+      <div id="modal-content" class="p-0"></div>
 
+    </div>
   </div>
-</div>
 
 
-<!-- ═══════════════════════════════════════
+  <!-- ═══════════════════════════════════════
      CONTACT / FOOTER
 ═══════════════════════════════════════ -->
-<footer id="contact" class="py-24 bg-stone-900" role="contentinfo" aria-label="Contact information">
-  <div class="max-w-screen-xl mx-auto px-6 lg:px-10">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+  <footer id="contact" class="py-24 bg-stone-900" role="contentinfo" aria-label="Contact information">
+    <div class="max-w-screen-xl mx-auto px-6 lg:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
 
-      <div>
-        <p class="text-xs font-bold tracking-[0.2em] text-stone-400 uppercase mb-6">Let's Connect</p>
-        <h2 class="text-4xl font-black text-white leading-tight mb-6">
-          Start a visual<br/>
-          partnership.
-        </h2>
-        <p class="text-stone-400 leading-relaxed text-sm max-w-sm">
-          Whether you need premium architectural photography, a high-impact commercial film, or custom branding visuals, reach out today.
-        </p>
+        <div>
+          <p class="text-xs font-bold tracking-[0.2em] text-stone-400 uppercase mb-6">Let's Connect</p>
+          <h2 class="text-4xl font-black text-white leading-tight mb-6">
+            Start a visual<br />
+            partnership.
+          </h2>
+          <p class="text-stone-400 leading-relaxed text-sm max-w-sm">
+            Whether you need premium architectural photography, a high-impact commercial film, or custom branding
+            visuals, reach out today.
+          </p>
 
-        <!-- Social links -->
-        <div id="footer-socials" class="flex items-center gap-4 mt-10"></div>
+          <!-- Social links -->
+          <div id="footer-socials" class="flex items-center gap-4 mt-10"></div>
+        </div>
+
+        <div
+          class="flex flex-col justify-center gap-8 border-t lg:border-t-0 lg:border-l border-stone-800 pt-8 lg:pt-0 lg:pl-16">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-stone-500 mb-3">Email Contact</p>
+            <a id="footer-email1" href="#"
+              class="block text-white text-lg font-semibold hover:text-stone-300 transition-colors mb-1"></a>
+            <a id="footer-email2" href="#"
+              class="block text-stone-400 text-sm hover:text-stone-200 transition-colors"></a>
+          </div>
+          <div class="w-16 h-px bg-stone-850"></div>
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-stone-500 mb-3">Phone Line</p>
+            <a id="footer-phone" href="#"
+              class="block text-white text-lg font-semibold hover:text-stone-300 transition-colors"></a>
+          </div>
+          <div class="w-16 h-px bg-stone-850"></div>
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-stone-500 mb-3">Base Location</p>
+            <p id="footer-location" class="text-white text-lg font-semibold"></p>
+          </div>
+        </div>
+
       </div>
 
-      <div class="flex flex-col justify-center gap-8 border-t lg:border-t-0 lg:border-l border-stone-800 pt-8 lg:pt-0 lg:pl-16">
-        <div>
-          <p class="text-xs font-bold uppercase tracking-widest text-stone-500 mb-3">Email Contact</p>
-          <a id="footer-email1" href="#" class="block text-white text-lg font-semibold hover:text-stone-300 transition-colors mb-1"></a>
-          <a id="footer-email2" href="#" class="block text-stone-400 text-sm hover:text-stone-200 transition-colors"></a>
-        </div>
-        <div class="w-16 h-px bg-stone-850"></div>
-        <div>
-          <p class="text-xs font-bold uppercase tracking-widest text-stone-500 mb-3">Phone Line</p>
-          <a id="footer-phone" href="#" class="block text-white text-lg font-semibold hover:text-stone-300 transition-colors"></a>
-        </div>
-        <div class="w-16 h-px bg-stone-850"></div>
-        <div>
-          <p class="text-xs font-bold uppercase tracking-widest text-stone-500 mb-3">Base Location</p>
-          <p id="footer-location" class="text-white text-lg font-semibold"></p>
-        </div>
+      <div class="border-t border-stone-850 mt-20 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-stone-600 text-xs" id="footer-copyright"></p>
+        <!-- Footer Bottom Social Icons -->
+        <div id="footer-bottom-socials" class="flex items-center gap-4"></div>
       </div>
-
     </div>
-
-    <div class="border-t border-stone-850 mt-20 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p class="text-stone-600 text-xs" id="footer-copyright"></p>
-      <!-- Footer Bottom Social Icons -->
-      <div id="footer-bottom-socials" class="flex items-center gap-4"></div>
-    </div>
-  </div>
-</footer>
+  </footer>
 
 
-<!-- ═══════════════════════════════════════
+  <!-- ═══════════════════════════════════════
      DATA + APP LOGIC
 ═══════════════════════════════════════ -->
-<script src="portfolioData.js"></script>
-<script>
-/* ──────────────────────────────────────────────────────────
-   ICON HELPERS
-────────────────────────────────────────────────────────── */
-const ICONS = {
-  camera: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>`,
-  video:  `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>`,
-  sliders:`<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>`,
-  play:   `<svg width="18" height="18" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>`,
-};
+  <script src="portfolioData.js"></script>
+  <script>
+    /* ──────────────────────────────────────────────────────────
+       ICON HELPERS
+    ────────────────────────────────────────────────────────── */
+    const ICONS = {
+      camera: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>`,
+      video: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>`,
+      sliders: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>`,
+      play: `<svg width="18" height="18" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>`,
+    };
 
-const SOCIAL_ICONS_SVG = {
-  linkedin:  `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>`,
-  facebook:  `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>`,
-  instagram: `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>`,
-  behance:   `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029H23zM15.998 13h3.749c-.066-1.735-1.242-2.546-1.869-2.546-.788 0-1.673.517-1.88 2.546zM1 22V2h6.967c2.381 0 5.6.734 5.6 4.12 0 1.763-.73 2.907-2.181 3.554 1.988.507 3.187 1.958 3.187 4.058C14.573 17.898 11.932 22 8.4 22H1zm6.355-13.036c1.398 0 2.278-.43 2.278-1.784 0-1.218-.88-1.706-2.184-1.706H4.614v3.49h2.741zm.29 8.072c1.585 0 2.738-.616 2.738-2.175 0-1.542-1.072-2.148-2.765-2.148H4.614v4.323h3.031z"/></svg>`,
-  youtube:   `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>`,
-};
+    const SOCIAL_ICONS_SVG = {
+      linkedin: `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>`,
+      facebook: `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>`,
+      instagram: `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>`,
+      behance: `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029H23zM15.998 13h3.749c-.066-1.735-1.242-2.546-1.869-2.546-.788 0-1.673.517-1.88 2.546zM1 22V2h6.967c2.381 0 5.6.734 5.6 4.12 0 1.763-.73 2.907-2.181 3.554 1.988.507 3.187 1.958 3.187 4.058C14.573 17.898 11.932 22 8.4 22H1zm6.355-13.036c1.398 0 2.278-.43 2.278-1.784 0-1.218-.88-1.706-2.184-1.706H4.614v3.49h2.741zm.29 8.072c1.585 0 2.738-.616 2.738-2.175 0-1.542-1.072-2.148-2.765-2.148H4.614v4.323h3.031z"/></svg>`,
+      youtube: `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>`,
+    };
 
-/* ──────────────────────────────────────────────────────────
-   BOOTSTRAP — Inject config values
-────────────────────────────────────────────────────────── */
-function bootstrap() {
-  // Try to use mockup hero image from config if set, otherwise fallback
-  if (SITE_CONFIG.heroImage) {
-    document.getElementById('hero-bg-image').src = SITE_CONFIG.heroImage;
-  }
+    /* ──────────────────────────────────────────────────────────
+       BOOTSTRAP — Inject config values
+    ────────────────────────────────────────────────────────── */
+    function bootstrap() {
+      // Try to use mockup hero image from config if set, otherwise fallback
+      if (SITE_CONFIG.heroImage) {
+        document.getElementById('hero-bg-image').src = SITE_CONFIG.heroImage;
+      }
 
-  // Populate floating socials capsule
-  const socialKeys = ['linkedin','facebook','instagram','behance','youtube'];
-  const navSocials = document.getElementById('nav-socials');
-  socialKeys.forEach(key => {
-    if (SITE_CONFIG.social[key]) {
-      const a = document.createElement('a');
-      a.href = SITE_CONFIG.social[key];
-      a.target = '_blank';
-      a.rel = 'noopener';
-      a.className = 'text-white hover:text-stone-300 transition-colors opacity-95';
-      a.setAttribute('aria-label', key);
-      a.innerHTML = SOCIAL_ICONS_SVG[key];
-      navSocials.appendChild(a);
+      // Populate floating socials capsule (Desktop & Mobile Dropdown)
+      const socialKeys = ['linkedin', 'facebook', 'instagram', 'behance', 'youtube'];
+      const navSocials = document.getElementById('nav-socials');
+      const mobileDropdown = document.getElementById('mobile-socials-dropdown');
+      socialKeys.forEach(key => {
+        if (SITE_CONFIG.social[key]) {
+          // Desktop anchor (remains white on dark background)
+          const a = document.createElement('a');
+          a.href = SITE_CONFIG.social[key];
+          a.target = '_blank';
+          a.rel = 'noopener';
+          a.className = 'text-white hover:text-stone-300 transition-colors opacity-95';
+          a.setAttribute('aria-label', key);
+          a.innerHTML = SOCIAL_ICONS_SVG[key];
+          navSocials.appendChild(a);
+
+          // Mobile dropdown anchor (styled dynamically via custom CSS selector)
+          const aMobile = document.createElement('a');
+          aMobile.href = SITE_CONFIG.social[key];
+          aMobile.target = '_blank';
+          aMobile.rel = 'noopener';
+          aMobile.className = 'mobile-social-link p-1.5';
+          aMobile.setAttribute('aria-label', `Follow Nimantha on ${key}`);
+          aMobile.innerHTML = SOCIAL_ICONS_SVG[key];
+          mobileDropdown.appendChild(aMobile);
+        }
+      });
+
+      // Populate footer socials
+      const footerSocials = document.getElementById('footer-socials');
+      socialKeys.forEach(key => {
+        if (SITE_CONFIG.social[key]) {
+          const a = document.createElement('a');
+          a.href = SITE_CONFIG.social[key];
+          a.target = '_blank';
+          a.rel = 'noopener';
+          a.className = 'w-10 h-10 flex items-center justify-center rounded-full border border-stone-800 text-stone-400 hover:border-stone-600 hover:text-white transition-all';
+          a.setAttribute('aria-label', key);
+          a.innerHTML = SOCIAL_ICONS_SVG[key];
+          footerSocials.appendChild(a);
+        }
+      });
+
+      // Footer contacts
+      const c = SITE_CONFIG.contact;
+      const fe1 = document.getElementById('footer-email1');
+      fe1.href = `mailto:${c.email1}`; fe1.textContent = c.email1;
+      const fe2 = document.getElementById('footer-email2');
+      fe2.href = `mailto:${c.email2}`; fe2.textContent = c.email2;
+      const fp = document.getElementById('footer-phone');
+      fp.href = `tel:${c.phone.replace(/\s/g, '')}`; fp.textContent = c.phone;
+      document.getElementById('footer-location').textContent = c.location;
+
+      // Copyright
+      document.getElementById('footer-copyright').textContent =
+        `© ${new Date().getFullYear()} ${SITE_CONFIG.name}. All rights reserved.`;
+
+      // Populate footer bottom socials
+      const footerBottomSocials = document.getElementById('footer-bottom-socials');
+      socialKeys.forEach(key => {
+        if (SITE_CONFIG.social[key]) {
+          const a = document.createElement('a');
+          a.href = SITE_CONFIG.social[key];
+          a.target = '_blank';
+          a.rel = 'noopener';
+          a.className = 'text-stone-500 hover:text-stone-300 transition-colors duration-200';
+          a.setAttribute('aria-label', `Follow Nimantha on ${key}`);
+          a.innerHTML = SOCIAL_ICONS_SVG[key];
+          footerBottomSocials.appendChild(a);
+        }
+      });
     }
-  });
 
-  // Populate footer socials
-  const footerSocials = document.getElementById('footer-socials');
-  socialKeys.forEach(key => {
-    if (SITE_CONFIG.social[key]) {
-      const a = document.createElement('a');
-      a.href = SITE_CONFIG.social[key];
-      a.target = '_blank';
-      a.rel = 'noopener';
-      a.className = 'w-10 h-10 flex items-center justify-center rounded-full border border-stone-800 text-stone-400 hover:border-stone-600 hover:text-white transition-all';
-      a.setAttribute('aria-label', key);
-      a.innerHTML = SOCIAL_ICONS_SVG[key];
-      footerSocials.appendChild(a);
-    }
-  });
-
-  // Footer contacts
-  const c = SITE_CONFIG.contact;
-  const fe1 = document.getElementById('footer-email1');
-  fe1.href = `mailto:${c.email1}`; fe1.textContent = c.email1;
-  const fe2 = document.getElementById('footer-email2');
-  fe2.href = `mailto:${c.email2}`; fe2.textContent = c.email2;
-  const fp = document.getElementById('footer-phone');
-  fp.href = `tel:${c.phone.replace(/\s/g,'')}`; fp.textContent = c.phone;
-  document.getElementById('footer-location').textContent = c.location;
-
-  // Copyright
-  document.getElementById('footer-copyright').textContent =
-    `© ${new Date().getFullYear()} ${SITE_CONFIG.name}. All rights reserved.`;
-
-  // Populate footer bottom socials
-  const footerBottomSocials = document.getElementById('footer-bottom-socials');
-  socialKeys.forEach(key => {
-    if (SITE_CONFIG.social[key]) {
-      const a = document.createElement('a');
-      a.href = SITE_CONFIG.social[key];
-      a.target = '_blank';
-      a.rel = 'noopener';
-      a.className = 'text-stone-500 hover:text-stone-300 transition-colors duration-200';
-      a.setAttribute('aria-label', `Follow Nimantha on ${key}`);
-      a.innerHTML = SOCIAL_ICONS_SVG[key];
-      footerBottomSocials.appendChild(a);
-    }
-  });
-}
-
-/* ──────────────────────────────────────────────────────────
-   RENDER SERVICES
-────────────────────────────────────────────────────────── */
-function renderServices() {
-  const grid = document.getElementById('services-grid');
-  SERVICES.forEach((s, i) => {
-    const card = document.createElement('div');
-    card.className = 'service-card reveal';
-    card.style.transitionDelay = `${i * 0.1}s`;
-    card.innerHTML = `
+    /* ──────────────────────────────────────────────────────────
+       RENDER SERVICES
+    ────────────────────────────────────────────────────────── */
+    function renderServices() {
+      const grid = document.getElementById('services-grid');
+      SERVICES.forEach((s, i) => {
+        const card = document.createElement('div');
+        card.className = 'service-card reveal';
+        card.style.transitionDelay = `${i * 0.1}s`;
+        card.innerHTML = `
       <div class="text-stone-400 mb-6">${ICONS[s.icon] || ''}</div>
       <h3 class="text-xl font-bold text-stone-900 mb-3">${s.title}</h3>
       <p class="text-stone-500 leading-relaxed text-sm mb-5">${s.description}</p>
       <div class="flex flex-wrap gap-2">
         ${s.tags.map(t => `<span class="tag-pill">${t}</span>`).join('')}
       </div>`;
-    grid.appendChild(card);
-  });
-}
+        grid.appendChild(card);
+      });
+    }
 
-/* ──────────────────────────────────────────────────────────
-   PORTFOLIO GRIDS
-────────────────────────────────────────────────────────── */
-const INITIAL_COUNT = 8;
-const gridState = { landscape: 0, architecture: 0, videography: 0 };
+    /* ──────────────────────────────────────────────────────────
+       PORTFOLIO GRIDS
+    ────────────────────────────────────────────────────────── */
+    const INITIAL_COUNT = 8;
+    const gridState = { landscape: 0, architecture: 0, videography: 0 };
 
-function getItems(cat) {
-  return portfolioData.filter(p => p.category === cat);
-}
+    function getItems(cat) {
+      return portfolioData.filter(p => p.category === cat);
+    }
 
-function createPortfolioItem(item) {
-  const div = document.createElement('div');
-  div.className = 'portfolio-item';
-  div.setAttribute('role', 'button');
-  div.setAttribute('tabindex', '0');
-  div.setAttribute('aria-label', `Open project: ${item.title}`);
-  div.dataset.id = item.id;
+    function createPortfolioItem(item) {
+      const div = document.createElement('div');
+      div.className = 'portfolio-item';
+      div.setAttribute('role', 'button');
+      div.setAttribute('tabindex', '0');
+      div.setAttribute('aria-label', `Open project: ${item.title}`);
+      div.dataset.id = item.id;
 
-  const isVideo = item.category === 'videography';
-  div.innerHTML = `
+      const isVideo = item.category === 'videography';
+      div.innerHTML = `
     <img src="${item.cover}" alt="${item.title}" loading="lazy" />
     ${isVideo ? `<div class="play-badge">${ICONS.play}</div>` : ''}
     <div class="portfolio-item-overlay">
       <p class="portfolio-item-title">${item.title}</p>
     </div>`;
 
-  div.addEventListener('click', () => openModal(item.id));
-  div.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') openModal(item.id); });
-  return div;
-}
+      div.addEventListener('click', () => openModal(item.id));
+      div.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') openModal(item.id); });
+      return div;
+    }
 
-function renderGrid(category) {
-  const items = getItems(category);
-  const grid = document.getElementById(`grid-${category}`);
-  const btn  = document.getElementById(`more-${category}`);
-  const current = gridState[category];
-  const next = Math.min(current + INITIAL_COUNT, items.length);
+    function renderGrid(category) {
+      const items = getItems(category);
+      const grid = document.getElementById(`grid-${category}`);
+      const btn = document.getElementById(`more-${category}`);
+      const current = gridState[category];
+      const next = Math.min(current + INITIAL_COUNT, items.length);
 
-  for (let i = current; i < next; i++) {
-    grid.appendChild(createPortfolioItem(items[i]));
-  }
-  gridState[category] = next;
+      for (let i = current; i < next; i++) {
+        grid.appendChild(createPortfolioItem(items[i]));
+      }
+      gridState[category] = next;
 
-  if (next >= items.length) {
-    btn.classList.add('hidden');
-  }
-}
+      if (next >= items.length) {
+        btn.classList.add('hidden');
+      }
+    }
 
-function initGrids() {
-  ['landscape','architecture','videography'].forEach(cat => {
-    renderGrid(cat);
-    document.getElementById(`more-${cat}`).addEventListener('click', () => renderGrid(cat));
-  });
-}
+    function initGrids() {
+      ['landscape', 'architecture', 'videography'].forEach(cat => {
+        renderGrid(cat);
+        document.getElementById(`more-${cat}`).addEventListener('click', () => renderGrid(cat));
+      });
+    }
 
-/* ──────────────────────────────────────────────────────────
-   PROJECT MODAL
-────────────────────────────────────────────────────────── */
-const modal       = document.getElementById('project-modal');
-const modalPanel  = document.getElementById('modal-panel');
-const modalContent= document.getElementById('modal-content');
-let  lastFocused  = null;
+    /* ──────────────────────────────────────────────────────────
+       PROJECT MODAL
+    ────────────────────────────────────────────────────────── */
+    const modal = document.getElementById('project-modal');
+    const modalPanel = document.getElementById('modal-panel');
+    const modalContent = document.getElementById('modal-content');
+    let lastFocused = null;
 
-function buildModalHTML(item) {
-  const videoHTML = item.videoEmbed
-    ? `<div class="relative w-full mb-6" style="padding-bottom:56.25%;">
+    function buildModalHTML(item) {
+      const videoHTML = item.videoEmbed
+        ? `<div class="relative w-full mb-6" style="padding-bottom:56.25%;">
          <iframe src="${item.videoEmbed}" class="absolute inset-0 w-full h-full border-0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="${item.title} video"></iframe>
        </div>`
-    : '';
+        : '';
 
-  const catLabel = { landscape:'Landscape Photography', architecture:'Architecture Photography', videography:'Videography' }[item.category] || item.category;
+      const catLabel = { landscape: 'Landscape Photography', architecture: 'Architecture Photography', videography: 'Videography' }[item.category] || item.category;
 
-  return `
+      return `
     <div class="relative w-full overflow-hidden bg-stone-100" style="height: min(55vh, 420px);">
       <img src="${item.gallery[0] || item.cover}" alt="${item.title}" class="w-full h-full object-cover" loading="eager" />
       <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
@@ -753,90 +891,114 @@ function buildModalHTML(item) {
       </div>
     </div>
   `;
-}
-
-function openModal(id) {
-  const item = portfolioData.find(p => p.id === id);
-  if (!item) return;
-  lastFocused = document.activeElement;
-  modalContent.innerHTML = buildModalHTML(item);
-  modalPanel.scrollTop = 0;
-  modal.classList.add('open');
-  document.body.style.overflow = 'hidden';
-  history.pushState({ projectId: id }, '', `#project/${id}`);
-  setTimeout(() => document.getElementById('modal-close').focus(), 100);
-}
-
-function closeModal() {
-  modal.classList.remove('open');
-  document.body.style.overflow = '';
-  if (history.state && history.state.projectId) {
-    history.pushState({}, '', window.location.pathname);
-  }
-  if (lastFocused) lastFocused.focus();
-  setTimeout(() => { modalContent.innerHTML = ''; }, 400);
-}
-
-document.getElementById('modal-close').addEventListener('click', closeModal);
-document.getElementById('modal-backdrop').addEventListener('click', closeModal);
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-window.addEventListener('popstate', () => {
-  if (modal.classList.contains('open')) closeModal();
-});
-
-function checkHashOnLoad() {
-  const hash = window.location.hash;
-  const match = hash.match(/^#project\/(.+)$/);
-  if (match) openModal(match[1]);
-}
-
-/* ──────────────────────────────────────────────────────────
-   NAVBAR DYNAMIC FLOATING / SCROLL LOGIC
-────────────────────────────────────────────────────────── */
-const navbar = document.getElementById('navbar');
-const hero = document.getElementById('hero');
-
-window.addEventListener('scroll', () => {
-  const threshold = hero.offsetHeight - 80;
-  if (window.scrollY > threshold) {
-    navbar.classList.add('scrolled', 'fixed');
-    navbar.classList.remove('absolute', 'bottom-0', 'translate-y-1/2');
-    navbar.style.top = '16px';
-  } else {
-    navbar.classList.remove('scrolled', 'fixed');
-    navbar.classList.add('absolute', 'bottom-0', 'translate-y-1/2');
-    navbar.style.top = '';
-  }
-}, { passive: true });
-
-/* ──────────────────────────────────────────────────────────
-   INTERSECTION OBSERVER — Reveal on scroll
-────────────────────────────────────────────────────────── */
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
     }
-  });
-}, { threshold: 0.1 });
 
-function observeRevealElements() {
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-}
+    function openModal(id) {
+      const item = portfolioData.find(p => p.id === id);
+      if (!item) return;
+      lastFocused = document.activeElement;
+      modalContent.innerHTML = buildModalHTML(item);
+      modalPanel.scrollTop = 0;
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      history.pushState({ projectId: id }, '', `#project/${id}`);
+      setTimeout(() => document.getElementById('modal-close').focus(), 100);
+    }
 
-/* ──────────────────────────────────────────────────────────
-   INIT
-────────────────────────────────────────────────────────── */
-document.addEventListener('DOMContentLoaded', () => {
-  bootstrap();
-  renderServices();
-  initGrids();
-  observeRevealElements();
-  checkHashOnLoad();
-});
-</script>
+    function closeModal() {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+      if (history.state && history.state.projectId) {
+        history.pushState({}, '', window.location.pathname);
+      }
+      if (lastFocused) lastFocused.focus();
+      setTimeout(() => { modalContent.innerHTML = ''; }, 400);
+    }
+
+    document.getElementById('modal-close').addEventListener('click', closeModal);
+    document.getElementById('modal-backdrop').addEventListener('click', closeModal);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    window.addEventListener('popstate', () => {
+      if (modal.classList.contains('open')) closeModal();
+    });
+
+    function checkHashOnLoad() {
+      const hash = window.location.hash;
+      const match = hash.match(/^#project\/(.+)$/);
+      if (match) openModal(match[1]);
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       NAVBAR DYNAMIC FLOATING / SCROLL LOGIC
+    ────────────────────────────────────────────────────────── */
+    const navbar = document.getElementById('navbar');
+    const hero = document.getElementById('hero');
+
+    window.addEventListener('scroll', () => {
+      const threshold = hero.offsetHeight - 80;
+      if (window.scrollY > threshold) {
+        navbar.classList.add('scrolled', 'fixed');
+        navbar.classList.remove('absolute', 'bottom-0', 'translate-y-1/2');
+        navbar.style.top = '16px';
+      } else {
+        navbar.classList.remove('scrolled', 'fixed');
+        navbar.classList.add('absolute', 'bottom-0', 'translate-y-1/2');
+        navbar.style.top = '';
+      }
+    }, { passive: true });
+
+    /* ──────────────────────────────────────────────────────────
+       INTERSECTION OBSERVER — Reveal on scroll
+    ────────────────────────────────────────────────────────── */
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    function observeRevealElements() {
+      document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       INIT
+    ────────────────────────────────────────────────────────── */
+    document.addEventListener('DOMContentLoaded', () => {
+      bootstrap();
+      renderServices();
+      initGrids();
+      observeRevealElements();
+      checkHashOnLoad();
+
+      // Mobile socials dropdown toggle listener
+      const toggleBtn = document.getElementById('mobile-socials-toggle');
+      const dropdown = document.getElementById('mobile-socials-dropdown');
+      const chevron = document.getElementById('mobile-socials-chevron');
+      if (toggleBtn && dropdown && chevron) {
+        toggleBtn.addEventListener('click', () => {
+          const isCollapsed = dropdown.classList.contains('hidden');
+          if (isCollapsed) {
+            dropdown.classList.remove('hidden');
+            setTimeout(() => {
+              dropdown.classList.add('opacity-100');
+            }, 10);
+            chevron.classList.add('rotate-180');
+          } else {
+            dropdown.classList.remove('opacity-100');
+            chevron.classList.remove('rotate-180');
+            setTimeout(() => {
+              dropdown.classList.add('hidden');
+            }, 300);
+          }
+        });
+      }
+    });
+  </script>
 
 </body>
+
 </html>
