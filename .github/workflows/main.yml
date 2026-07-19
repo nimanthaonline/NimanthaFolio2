@@ -1,4 +1,4 @@
-name: Deploy Antigravity to GitHub Pages
+name: Deploy Static Website to GitHub Pages
 
 on:
   push:
@@ -23,25 +23,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-node-version: 20
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build site
-        run: npm run build # Ensure this command matches your package.json build script
-
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist' # Swap to './build' or './out' depending on where Antigravity outputs compiled files
+          # Upload the root directory containing index.html and portfolioData.js
+          path: '.'
 
       - name: Deploy to GitHub Pages
         id: deployment
