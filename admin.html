@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nimantha Galhenage — CMS Admin Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;850;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    /* Custom styles for WYSIWYG Editor */
+    #editor img {
+      max-width: 150px;
+      height: auto;
+      border-radius: 4px;
+      display: inline-block;
+      margin: 4px;
+      border: 2px solid #e7e5e4;
+    }
+    #editor ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    #editor ol {
+      list-style-type: decimal;
+      padding-left: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    #editor blockquote {
+      border-left: 3px solid #d6d3d1;
+      padding-left: 0.75rem;
+      color: #78716c;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body class="font-sans bg-stone-50 text-stone-800 min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-stone-900 text-white py-4 px-6 shadow-md flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="bg-white/10 p-2 rounded">
+        <span class="font-black tracking-widest text-xs">NG</span>
+      </div>
+      <div>
+        <h1 class="text-md font-bold tracking-tight">Nimantha Galhenage</h1>
+        <p class="text-[10px] text-stone-400 tracking-wider uppercase">Static CMS Control Panel</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-4">
+      <a href="index.html" target="_blank" class="text-xs font-semibold text-stone-300 hover:text-white border border-stone-700 px-3 py-1.5 rounded transition-all hover:bg-stone-800">
+        View Live Site ↗
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-1 max-w-[1600px] w-full mx-auto px-6 py-8 grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-8">
+
+    <!-- LEFT SCREEN: Add/Edit Project Form -->
+    <section class="bg-white border border-stone-200 rounded-lg p-6 shadow-sm flex flex-col gap-6">
+      <div class="border-b border-stone-100 pb-4">
+        <h2 class="text-lg font-bold text-stone-900">Add New Project</h2>
+        <p class="text-xs text-stone-500 mt-1">Input details to append a new workspace entry. Fields will auto-generate IDs.</p>
+      </div>
+
+      <form id="project-form" class="space-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Title -->
+          <div>
+            <label class="block text-xs font-bold text-stone-500 uppercase mb-1.5" for="project-title">Project Title*</label>
+            <input type="text" id="project-title" required class="w-full text-sm border border-stone-200 rounded p-2.5 bg-stone-50 focus:bg-white focus:outline-stone-500 transition-colors" placeholder="e.g. Sunrise at Ella Rock">
+          </div>
+          <!-- Thumbnail URL -->
+          <div>
+            <label class="block text-xs font-bold text-stone-500 uppercase mb-1.5" for="project-cover">Thumbnail (Cover Image URL)*</label>
+            <input type="url" id="project-cover" required class="w-full text-sm border border-stone-200 rounded p-2.5 bg-stone-50 focus:bg-white focus:outline-stone-500 transition-colors" placeholder="https://images.unsplash.com/...">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Category -->
+          <div>
+            <label class="block text-xs font-bold text-stone-500 uppercase mb-1.5" for="project-category">Category*</label>
+            <select id="project-category" required class="w-full text-sm border border-stone-200 rounded p-2.5 bg-stone-50 focus:bg-white focus:outline-stone-500 transition-colors">
+              <option value="" disabled selected>Select Category</option>
+              <option value="landscape">Landscape Photography</option>
+              <option value="architecture">Architecture Photography</option>
+              <option value="videography">Videography</option>
+            </select>
+          </div>
+          <!-- Optional Video Embed -->
+          <div>
+            <label class="block text-xs font-bold text-stone-500 uppercase mb-1.5" for="project-video">Video Embed URL (Optional)</label>
+            <input type="url" id="project-video" class="w-full text-sm border border-stone-200 rounded p-2.5 bg-stone-50 focus:bg-white focus:outline-stone-500 transition-colors" placeholder="e.g. https://www.youtube.com/embed/...">
+          </div>
+        </div>
+
+        <!-- Rich Text WYSIWYG Description -->
+        <div>
+          <label class="block text-xs font-bold text-stone-500 uppercase mb-1.5">Project Description (Rich Text Editor)*</label>
+          <div class="border border-stone-200 rounded overflow-hidden">
+            <!-- Toolbar -->
+            <div class="bg-stone-100 border-b border-stone-200 px-3 py-2 flex flex-wrap gap-1 items-center">
+              <button type="button" onclick="formatText('bold')" class="px-2.5 py-1 text-xs font-bold bg-white hover:bg-stone-50 border border-stone-200 rounded shadow-sm">B</button>
+              <button type="button" onclick="formatText('italic')" class="px-2.5 py-1 text-xs italic bg-white hover:bg-stone-50 border border-stone-200 rounded shadow-sm">I</button>
+              <button type="button" onclick="formatText('insertUnorderedList')" class="px-2 py-1 text-xs bg-white hover:bg-stone-50 border border-stone-200 rounded shadow-sm">Bullet List</button>
+              <button type="button" onclick="formatText('insertOrderedList')" class="px-2 py-1 text-xs bg-white hover:bg-stone-50 border border-stone-200 rounded shadow-sm">Numbered List</button>
+              <div class="w-px h-5 bg-stone-300 mx-1"></div>
+              <button type="button" onclick="insertImage()" class="px-2 py-1 text-xs bg-stone-800 text-white hover:bg-stone-700 rounded shadow-sm flex items-center gap-1">
+                <span>📷 Add Image</span>
+              </button>
+            </div>
+            <!-- Editable Div -->
+            <div id="editor" contenteditable="true" class="p-3 min-h-[160px] max-h-[300px] overflow-y-auto bg-stone-50/50 focus:bg-white focus:outline-none text-sm text-stone-700 prose max-w-none" placeholder="Write description here..."></div>
+          </div>
+        </div>
+
+        <!-- Metadata Section -->
+        <div class="bg-stone-50 border border-stone-200 rounded p-4 space-y-4">
+          <p class="text-xs font-bold text-stone-600 tracking-wider uppercase">Project Information Sidebar</p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div>
+              <label class="block text-[10px] font-bold text-stone-500 uppercase mb-1" for="meta-tools">Tools Used*</label>
+              <input type="text" id="meta-tools" required class="w-full text-xs border border-stone-200 rounded p-2 bg-white" placeholder="Sony FX3, DJI Mini 4">
+            </div>
+            <div>
+              <label class="block text-[10px] font-bold text-stone-500 uppercase mb-1" for="meta-client">Client*</label>
+              <input type="text" id="meta-client" required class="w-full text-xs border border-stone-200 rounded p-2 bg-white" placeholder="Dilmah Tea / Personal">
+            </div>
+            <div>
+              <label class="block text-[10px] font-bold text-stone-500 uppercase mb-1" for="meta-agency">Agency*</label>
+              <input type="text" id="meta-agency" required class="w-full text-xs border border-stone-200 rounded p-2 bg-white" placeholder="Ogilvy / —">
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full bg-stone-900 hover:bg-stone-850 text-white font-bold py-3 text-sm rounded shadow transition-colors">
+          Add Project Entry
+        </button>
+      </form>
+
+      <!-- Import / Export Section -->
+      <div class="border-t border-stone-200 pt-6 mt-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="text-xs font-bold text-stone-700 uppercase mb-2">Import portfolioData Array</h3>
+          <textarea id="import-area" class="w-full h-24 border border-stone-200 rounded p-2 text-xs font-mono bg-stone-50 focus:bg-white" placeholder="Paste array string: [...] or copy existing portfolioData.js here..."></textarea>
+          <button id="btn-import" class="mt-2 text-xs font-semibold bg-stone-200 hover:bg-stone-300 text-stone-700 px-3 py-2 rounded transition-colors">
+            Load & Parse Data
+          </button>
+        </div>
+        <div class="flex flex-col justify-between">
+          <div>
+            <h3 class="text-xs font-bold text-stone-700 uppercase mb-2">Export Data File</h3>
+            <p class="text-xs text-stone-500 leading-relaxed">
+              Compile current changes and download the updated database. Simply save the output in your project folder to update the live site.
+            </p>
+          </div>
+          <button id="btn-export" class="mt-4 w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-2.5 text-xs uppercase tracking-wider rounded shadow transition-colors">
+            📥 Generate & Download portfolioData.js
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHT SCREEN: Real-time Active Projects List -->
+    <section class="bg-white border border-stone-200 rounded-lg p-6 shadow-sm flex flex-col">
+      <div class="border-b border-stone-100 pb-4 mb-4 flex items-center justify-between">
+        <div>
+          <h2 class="text-lg font-bold text-stone-900">Active Database Entries</h2>
+          <p class="text-xs text-stone-500 mt-1">Live preview of projects loaded in memory.</p>
+        </div>
+        <span id="project-count" class="bg-stone-100 text-stone-700 text-xs font-bold px-2.5 py-1 rounded-full">
+          0 Projects
+        </span>
+      </div>
+
+      <!-- Scrollable Projects List -->
+      <div id="projects-list" class="flex-1 space-y-3 overflow-y-auto pr-1 max-h-[70vh]">
+        <!-- Rendered dynamically -->
+        <p class="text-stone-400 text-xs italic text-center py-10">No projects loaded. Paste data below or load portfolioData.js</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Load current project script -->
+  <script src="portfolioData.js"></script>
+
+  <script>
+    /* ──────────────────────────────────────────────────────────
+       FALLBACK DEFAULTS (For starting fresh)
+    ────────────────────────────────────────────────────────── */
+    const siteConfigDefaults = {
+      name: "Nimantha Galhenage",
+      tagline: "Creative Designer, Videographer & Editor",
+      bio: "Photographer & Videographer based in Sri Lanka with 10+ years of experience...",
+      heroImage: "https://images.unsplash.com/photo-1542224566-6e85f2e6772f?w=1920&q=80",
+      contact: {
+        email1: "hello@nimanthagalhenage.com",
+        email2: "ngalhenage@gmail.com",
+        phone: "+94 772 694 177",
+        location: "Sri Lanka"
+      },
+      social: {
+        linkedin: "#", facebook: "#", instagram: "#", behance: "#", youtube: "#"
+      }
+    };
+
+    const servicesDefaults = [
+      {
+        icon: "camera",
+        title: "Photography",
+        description: "Landscape, architecture, and fine-art photography that captures the soul of every scene.",
+        tags: ["Landscape", "Architecture", "Fine Art", "Commercial"]
+      },
+      {
+        icon: "video",
+        title: "Videography",
+        description: "Cinematic video production for real estate walkthroughs, events, reels, and commercial campaigns.",
+        tags: ["Real Estate", "Events", "Reels", "Commercials"]
+      },
+      {
+        icon: "sliders",
+        title: "Post Production",
+        description: "Professional colour grading, motion graphics, and seamless editing that elevate raw footage.",
+        tags: ["Colour Grading", "Motion Graphics", "Editing", "VFX"]
+      }
+    ];
+
+    // In-memory array containing active project listings
+    let activeProjects = [];
+
+    /* ──────────────────────────────────────────────────────────
+       RICH TEXT WYSIWYG LOGIC
+    ────────────────────────────────────────────────────────── */
+    function formatText(command) {
+      document.execCommand(command, false, null);
+      document.getElementById('editor').focus();
+    }
+
+    function insertImage() {
+      const url = prompt("Paste your image URL here:");
+      if (url) {
+        // Validate URL format
+        if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('/') || url.startsWith('./')) {
+          document.execCommand('insertImage', false, url);
+        } else {
+          alert('Invalid URL format. Please enter a valid path.');
+        }
+      }
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       ID GENERATOR (Auto increments index depending on category)
+    ────────────────────────────────────────────────────────── */
+    function generateId(category) {
+      const prefix = { landscape: 'ls-', architecture: 'ar-', videography: 'vd-' }[category] || 'prj-';
+      const items = activeProjects.filter(p => p.category === category);
+      
+      let maxNum = 0;
+      items.forEach(item => {
+        const numPart = item.id.replace(prefix, '');
+        const parsed = parseInt(numPart, 10);
+        if (!isNaN(parsed) && parsed > maxNum) {
+          maxNum = parsed;
+        }
+      });
+
+      const nextNum = maxNum + 1;
+      return prefix + (nextNum < 10 ? '0' + nextNum : nextNum);
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       EXTRACT IMAGE URLS FROM WYSIWYG
+    ────────────────────────────────────────────────────────── */
+    function extractImagesFromContent(htmlContent) {
+      const urls = [];
+      const div = document.createElement('div');
+      div.innerHTML = htmlContent;
+      const imgs = div.querySelectorAll('img');
+      imgs.forEach(img => {
+        if (img.src) urls.push(img.src);
+      });
+      return urls;
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       RENDER LIST VIEW
+    ────────────────────────────────────────────────────────── */
+    function updateProjectListView() {
+      const container = document.getElementById('projects-list');
+      const countEl = document.getElementById('project-count');
+      
+      container.innerHTML = '';
+      countEl.textContent = `${activeProjects.length} Projects`;
+
+      if (activeProjects.length === 0) {
+        container.innerHTML = `
+          <p class="text-stone-450 text-xs italic text-center py-10">
+            No projects loaded. Enter new data or paste script array.
+          </p>`;
+        return;
+      }
+
+      activeProjects.forEach((p, idx) => {
+        const item = document.createElement('div');
+        item.className = 'flex items-center gap-3.5 p-3.5 bg-stone-50 border border-stone-200 rounded hover:bg-stone-100/60 transition-colors';
+        
+        const catBadge = { 
+          landscape: 'bg-emerald-50 text-emerald-700 border-emerald-100', 
+          architecture: 'bg-blue-50 text-blue-700 border-blue-100', 
+          videography: 'bg-amber-50 text-amber-700 border-amber-100' 
+        }[p.category] || 'bg-stone-100 text-stone-700';
+
+        item.innerHTML = `
+          <img src="${p.cover}" alt="Cover image for ${p.title}" class="w-14 h-11 object-cover rounded bg-stone-200 flex-shrink-0" onerror="this.src='https://images.unsplash.com/photo-1542224566-6e85f2e6772f?w=100&q=80'">
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-[9px] font-bold uppercase tracking-widest text-stone-400 font-mono">${p.id}</span>
+              <span class="text-[9px] font-bold px-1.5 py-0.5 rounded border ${catBadge} uppercase tracking-wider">${p.category}</span>
+            </div>
+            <h4 class="text-xs font-semibold text-stone-900 truncate">${p.title}</h4>
+          </div>
+          <button onclick="deleteProject('${p.id}')" class="text-xs font-bold text-red-500 hover:text-red-700 p-2 rounded hover:bg-red-50 transition-colors" title="Delete project ${p.id}">
+            Delete
+          </button>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       DELETE PROJECT ACTION
+    ────────────────────────────────────────────────────────── */
+    window.deleteProject = function(id) {
+      if (confirm(`Are you sure you want to delete project entry ${id}?`)) {
+        activeProjects = activeProjects.filter(p => p.id !== id);
+        updateProjectListView();
+      }
+    };
+
+    /* ──────────────────────────────────────────────────────────
+       SUBMIT FORM WORKFLOW
+    ────────────────────────────────────────────────────────── */
+    document.getElementById('project-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const title = document.getElementById('project-title').value.trim();
+      const cover = document.getElementById('project-cover').value.trim();
+      const category = document.getElementById('project-category').value;
+      const videoEmbed = document.getElementById('project-video').value.trim();
+      const description = document.getElementById('editor').innerHTML.trim();
+      
+      const tools = document.getElementById('meta-tools').value.trim();
+      const client = document.getElementById('meta-client').value.trim();
+      const agency = document.getElementById('meta-agency').value.trim();
+
+      if (!description || description === '<br>' || description === '') {
+        alert('Please enter a description for the project.');
+        return;
+      }
+
+      // Automatically generate incremented ID
+      const id = generateId(category);
+
+      // Extract inline images from WYSIWYG to populate the cover and gallery index
+      const inlineImgs = extractImagesFromContent(description);
+      const gallery = [cover, ...inlineImgs];
+
+      const newProject = {
+        id,
+        category,
+        title,
+        cover,
+        description,
+        gallery,
+        tools,
+        client,
+        agency
+      };
+
+      if (videoEmbed) {
+        newProject.videoEmbed = videoEmbed;
+      }
+
+      activeProjects.unshift(newProject); // Prepend to show on top
+      updateProjectListView();
+
+      // Reset form fields
+      document.getElementById('project-form').reset();
+      document.getElementById('editor').innerHTML = '';
+      document.getElementById('project-title').focus();
+    });
+
+    /* ──────────────────────────────────────────────────────────
+       IMPORT ARRAY WORKFLOW
+    ────────────────────────────────────────────────────────── */
+    document.getElementById('btn-import').addEventListener('click', () => {
+      const rawText = document.getElementById('import-area').value.trim();
+      if (!rawText) {
+        alert('Please paste the portfolio data script/array first.');
+        return;
+      }
+
+      // Cleanup code structure to extract raw array values
+      let clean = rawText;
+      if (clean.includes('portfolioData =')) {
+        clean = clean.substring(clean.indexOf('=') + 1);
+      }
+      if (clean.endsWith(';')) {
+        clean = clean.slice(0, -1);
+      }
+
+      try {
+        const parsed = new Function(`return ${clean}`)();
+        if (Array.isArray(parsed)) {
+          activeProjects = parsed;
+          updateProjectListView();
+          alert('Successfully parsed and loaded ' + parsed.length + ' projects into database memory.');
+        } else {
+          alert('Data parsed is not an array structure. Please check inputs.');
+        }
+      } catch (err) {
+        alert('Failed parsing data. Error details: ' + err.message);
+      }
+    });
+
+    /* ──────────────────────────────────────────────────────────
+       EXPORT FILE GENERATOR & DOWNLOAD
+    ────────────────────────────────────────────────────────── */
+    document.getElementById('btn-export').addEventListener('click', () => {
+      // Preserve loaded config, otherwise fall back to initial templates
+      const activeConfig = typeof SITE_CONFIG !== 'undefined' ? SITE_CONFIG : siteConfigDefaults;
+      const activeServices = typeof SERVICES !== 'undefined' ? SERVICES : servicesDefaults;
+
+      // Compile final code blocks structure
+      const fileData = `/**
+ * ============================================================
+ * NIMANTHA GALHENAGE — PORTFOLIO DATA (Static CMS)
+ * ============================================================
+ * Updated automatically via the Standalone CMS Panel (admin.html)
+ */
+
+const SITE_CONFIG = ${JSON.stringify(activeConfig, null, 2)};
+
+const SERVICES = ${JSON.stringify(activeServices, null, 2)};
+
+const portfolioData = ${JSON.stringify(activeProjects, null, 2)};
+`;
+
+      // Download file to client storage
+      const blob = new Blob([fileData], { type: 'application/javascript;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const trigger = document.createElement('a');
+      trigger.href = url;
+      trigger.download = 'portfolioData.js';
+      trigger.click();
+      URL.revokeObjectURL(url);
+    });
+
+    /* ──────────────────────────────────────────────────────────
+       ON PAGE LOAD INITIALIZATION
+    ────────────────────────────────────────────────────────── */
+    window.addEventListener('DOMContentLoaded', () => {
+      // Read array imported from portfolioData.js if present
+      if (typeof portfolioData !== 'undefined' && Array.isArray(portfolioData)) {
+        activeProjects = [...portfolioData];
+        // Populate import box with formatted content for convenience
+        document.getElementById('import-area').value = JSON.stringify(portfolioData, null, 2);
+      }
+      updateProjectListView();
+    });
+  </script>
+</body>
+</html>
