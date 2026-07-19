@@ -9,7 +9,7 @@ const SITE_CONFIG = {
   "name": "Nimantha Galhenage",
   "tagline": "Creative Designer, Videographer & Editor",
   "bio": "Photographer & Videographer based in Sri Lanka with 10+ years of experience creating compelling visual content. I specialize in landscape and architecture photography, along with real estate, events, reels, and commercial videography — crafting visuals that combine creativity, storytelling, and attention to detail.",
-  "heroImage": "https://images.unsplash.com/photo-1542224566-6e85f2e6772f?w=1920&q=80",
+  "heroImage": "https://photographylife.com/wp-content/uploads/2016/06/Mass.jpg",
   "contact": {
     "email1": "hello@nimanthagalhenage.com",
     "email2": "ngalhenage@gmail.com",
